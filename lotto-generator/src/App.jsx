@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Sparkles, RefreshCcw, Copy, Check } from 'lucide-react';
+import { Sun, Moon, Sparkles, RefreshCcw, Copy, Check, Send, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
 
@@ -8,6 +8,10 @@ function App() {
   const [lottoSets, setLottoSets] = useState([]);
   const [isGenerating, setIsGenerating] = useState(false);
   const [copiedIndex, setCopiedIndex] = useState(null);
+
+  // Contact Form State
+  const [formStatus, setFormStatus] = useState(null); // 'submitting', 'success', 'error'
+  const [formError, setFormError] = useState('');
 
   useEffect(() => {
     // Check system preference on load
@@ -90,6 +94,41 @@ function App() {
     if (num <= 30) return 'var(--ball-bg-3)';
     if (num <= 40) return 'var(--ball-bg-4)';
     return 'var(--ball-bg-5)';
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus('submitting');
+    setFormError('');
+
+    const form = e.target;
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch('https://formspree.io/f/mojnowrk', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: data
+      });
+
+      if (response.ok) {
+        setFormStatus('success');
+        form.reset();
+      } else {
+        const responseData = await response.json();
+        if (Object.hasOwn(responseData, 'errors')) {
+          setFormError(responseData.errors.map(err => err.message).join(', '));
+        } else {
+          setFormError('전송 중 문제가 발생했습니다.');
+        }
+        setFormStatus('error');
+      }
+    } catch (error) {
+      setFormError('네트워크 오류가 발생했습니다.');
+      setFormStatus('error');
+    }
   };
 
   return (
@@ -188,6 +227,47 @@ function App() {
             ))}
           </AnimatePresence>
         </div>
+
+        {/* Contact Form Section */}
+        <div className="contact-form-section">
+          <h2>제휴 및 통합 문의</h2>
+          <p>비즈니스 파트너십, 입점 등 다양한 제안을 환영합니다.</p>
+
+          {formStatus === 'success' && (
+            <div className="alert alert-success">
+              <CheckCircle size={18} /> 성공적으로 메시지가 전송되었습니다.
+            </div>
+          )}
+
+          {formStatus === 'error' && (
+            <div className="alert alert-error">
+              <AlertCircle size={18} /> {formError}
+            </div>
+          )}
+
+          <form onSubmit={handleFormSubmit} style={{ display: formStatus === 'success' ? 'none' : 'block' }}>
+            <div className="form-group">
+              <label htmlFor="name">이름 / 회사명</label>
+              <input type="text" id="name" name="name" className="form-control" required placeholder="(주)프로덕트빌더" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email">회신받을 이메일</label>
+              <input type="email" id="email" name="email" className="form-control" required placeholder="contact@example.com" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="message">문의 내용</label>
+              <textarea id="message" name="message" className="form-control" required placeholder="제안하실 내용을 간단히 작성해주세요."></textarea>
+            </div>
+            <button type="submit" className="btn-submit" disabled={formStatus === 'submitting'}>
+              {formStatus === 'submitting' ? (
+                <><Loader2 className="animate-spin" size={18} /> 전송 중...</>
+              ) : (
+                <><Send size={18} /> 문의 보내기</>
+              )}
+            </button>
+          </form>
+        </div>
+
       </motion.div>
 
       <style dangerouslySetInnerHTML={{
