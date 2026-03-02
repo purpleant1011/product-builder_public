@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Sun, Moon, Sparkles, RefreshCcw, Copy, Check, Send, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
+import { LegalModals } from './components/LegalModals';
 
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -268,10 +269,55 @@ function App() {
           </form>
         </div>
 
+        {/* SEO & Information Content Section */}
+        <div className="content-section" style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid ' + (isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'), textAlign: 'left', lineHeight: '1.6' }}>
+          <h2 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>Lotto Dreamer 로또 번호 생성기란?</h2>
+          <p style={{ marginBottom: '1.5rem', opacity: 0.9, fontSize: '0.95rem' }}>
+            Lotto Dreamer는 직관적인 글래스모피즘(Glassmorphism) 기반의 아름다운 UI를 자랑하는 <strong>무료 로또 번호 생성 도구</strong>입니다.
+            기존의 복잡하고 불편한 난수 생성기들과 달리, 단 번의 클릭만으로 가장 이상적인 5게임(총 30개의 번호) 세트를 빠르고 화려하게 추출합니다.
+            수학적 무작위 알고리즘을 사용하여 중복 없는 번호 6자리를 공정하게 조합하며, 생성된 번호를 손쉽게 복사하여 보관하거나 공유할 수 있습니다.
+            이번 V2 업데이트를 통해 더욱 화려한 폭죽 애니메이션과 다크 모드를 완벽하게 지원하여, 단순히 번호를 뽑는 행위 이상의 훌륭한 사용자 경험(UX)을 선사합니다.
+          </p>
+
+          <h3 style={{ fontSize: '1.2rem', marginBottom: '0.8rem', marginTop: '2rem' }}>자주 묻는 질문 (FAQ)</h3>
+          <details style={{ marginBottom: '1rem', background: isDark ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.5)', padding: '15px', borderRadius: '12px' }}>
+            <summary style={{ fontWeight: 600, cursor: 'pointer' }}>1. 사용하는데 비용이 발생하나요?</summary>
+            <p style={{ marginTop: '10px', fontSize: '0.9rem', opacity: 0.85 }}>아니요, Lotto Dreamer는 모든 기능(애니메이션, 다크 테마, 클립보드 복사 등)을 100% 무료로 제한 없이 사용할 수 있는 오픈형 웹 도구입니다. 가입이나 로그인 절차도 필요하지 않습니다.</p>
+          </details>
+
+          <details style={{ marginBottom: '1rem', background: isDark ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.5)', padding: '15px', borderRadius: '12px' }}>
+            <summary style={{ fontWeight: 600, cursor: 'pointer' }}>2. 번호는 어떤 방식으로 생성되나요?</summary>
+            <p style={{ marginTop: '10px', fontSize: '0.9rem', opacity: 0.85 }}>JavaScript의 기본 <code>Math.random()</code> 엔진을 베이스로 활용하여 1부터 45까지의 숫자 중 무작위 값 난수를 추출합니다. 한 세트에 동일한 숫자가 중복해서 나오지 않도록 별도의 로직 검증을 거친 후, 보기 편하도록 오름차순으로 바로 정렬하여 제공합니다.</p>
+          </details>
+
+          <details style={{ marginBottom: '1rem', background: isDark ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.5)', padding: '15px', borderRadius: '12px' }}>
+            <summary style={{ fontWeight: 600, cursor: 'pointer' }}>3. 생성된 번호를 사용하면 당첨 확률이 높아지나요?</summary>
+            <p style={{ marginTop: '10px', fontSize: '0.9rem', opacity: 0.85 }}>이 도구는 단순한 난수 생성 서비스이므로 실제 로또 당첨 확률을 수학적으로 높여주지는 못합니다. 번호를 수동으로 고르기 어려울 때, 공정하고 무작위적인 숫자를 편리하게 얻기 위한 재미 용도로만 사용해 주시기 바랍니다.</p>
+          </details>
+        </div>
+
+        <LegalModals isDark={isDark} />
+
       </motion.div>
 
       <style dangerouslySetInnerHTML={{
         __html: `
+        .content-section details > summary {
+          list-style: none; /* remove default triangle for some browsers */
+        }
+        .content-section details > summary::-webkit-details-marker {
+          display: none; /* remove default triangle for Webkit */
+        }
+        .content-section details > summary::before {
+          content: '▶';
+          display: inline-block;
+          margin-right: 8px;
+          font-size: 0.8rem;
+          transition: transform 0.2s;
+        }
+        .content-section details[open] > summary::before {
+          transform: rotate(90deg);
+        }
         .animate-spin {
           animation: spin 1s linear infinite;
         }
