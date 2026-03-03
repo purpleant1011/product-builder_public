@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6100551786781834">
+    <title>RNG(난수생성기)의 완벽한 이해: 컴퓨터는 어떻게 '무작위'를 만들어낼까? - Product Builder Blog</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6100551786781834" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;700&display=swap');
+        body { font-family: 'Pretendard', sans-serif; background-color: #0f172a; color: #f8fafc; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding: 0; }
+        .header { width: 100%; background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0; z-index: 100; }
+        .nav { max-width: 800px; margin: 0 auto; padding: 1rem 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 700; font-size: 1.2rem; color: #f8fafc; text-decoration: none; background: linear-gradient(135deg, #60a5fa, #a855f7); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { display: flex; gap: 1.5rem; }
+        .nav-links a { color: #cbd5e1; text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
+        .nav-links a:hover { color: #f8fafc; }
+        .container { max-width: 800px; width: 100%; padding: 40px 20px; flex: 1; }
+        .article-header { border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 2rem; margin-bottom: 2rem; }
+        h1 { font-size: 2.2rem; line-height: 1.4; margin-bottom: 1rem; }
+        .meta { color: #94a3b8; font-size: 0.9rem; }
+        .content { line-height: 1.8; font-size: 1.05rem; color: #cbd5e1; }
+        .content h2 { color: #f8fafc; margin-top: 2.5rem; margin-bottom: 1rem; font-size: 1.4rem; }
+        .content p { margin-bottom: 1.5rem; }
+        footer { width: 100%; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 4rem; }
+        .footer-links { display: flex; gap: 1.5rem; opacity: 0.8; font-size: 0.85rem; }
+        .footer-links a { color: inherit; text-decoration: underline; transition: opacity 0.2s; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="/index.html" class="logo">Product Builder Hub</a>
+            <div class="nav-links">
+                <a href="/index.html">Home</a>
+                <a href="/blog/index.html" style="color: #f8fafc; font-weight: 700;">Blog</a>
+                <a href="/about.html">About</a>
+                <a href="/contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article>
+            <div class="article-header">
+                <h1>RNG(난수생성기)의 완벽한 이해: 컴퓨터는 어떻게 '무작위'를 만들어낼까?</h1>
+                <div class="meta">발행일: 2024년 2월 24일 | 작성자: Product Builder Team</div>
+            </div>
+            <div class="content">
+                
+            <h2>1. 서론: '무작위'라는 환상</h2>
+            <p>우리는 일상에서 '무작위(Random)'라는 단어를 자주 사용합니다. 동전을 던지거나 주사위를 굴릴 때 나오는 결과를 무작위라고 부르죠. 하지만 엄밀히 말해 고전 역학의 관점에서 동전 던지기는 초기 조건(힘, 각도, 공기 저항)을 완벽히 안다면 결과를 예측할 수 있는 결정론적 사건입니다. 그렇다면 모든 것이 0과 1 논리 회로로 이루어진 컴퓨터는 어떻게 완벽히 무작위인 숫자를 만들어낼 수 있을까요? 결론부터 말하자면, 우리가 일상적으로 사용하는 대부분의 프로그램은 '진짜 무작위'가 아닌 '유사 무작위(Pseudo-Random)'를 사용합니다.</p>
+            <p>이 글에서는 Product Builder의 Lotto Dreamer와 같은 도구들이 내부적으로 어떤 수학적 알고리즘을 거쳐 공정하고 예측 불가능해 보이는 결과값을 제공하는지, RNG(Random Number Generator)의 세계를 깊이 탐구합니다.</p>
+
+            <h2>2. PRNG(Pseudo-Random Number Generator)의 원리</h2>
+            <p>컴퓨터는 본질적으로 입력된 명령을 그대로 수행하는 기계입니다. 따라서 특별한 하드웨어의 도움 없이 순수 소프트웨어만으로는 완벽한 무작위성을 구현할 수 없습니다. 대신 수학적 공식을 사용하여 마치 무작위처럼 보이는 긴 수열을 만들어내는데, 이를 PRNG(유사 난수 생성기)라고 합니다. PRNG는 '시드(Seed)'라는 초기값을 바탕으로 작동합니다. 만약 동일한 시드값을 입력하면 알고리즘은 항상 동일한 난수 배열을 뱉어냅니다.</p>
+            <p>초창기 컴퓨터 과학에서는 무작위성에 대한 연구가 미비하여 여러 보안 사고가 발생하기도 했습니다. 예를 들어 구형 슬롯머신 기계들의 경우 내부 PRNG의 주기가 짧아 다음 번호를 예측하여 부당한 이득을 취하는 범죄가 발생하기도 했죠. 현대의 PRNG는 메르센 트위스터(Mersenne Twister)와 같은 고도화된 알고리즘을 사용하여 주기가 우주 나이의 수십억 배에 달할 정도로 길고, 통계적으로도 매우 훌륭한 무작위성을 보여줍니다.</p>
+
+            <h2>3. JavaScript와 Math.random()</h2>
+            <p>웹 브라우저에서 실행되는 웹 애플리케이션들은 대부분 JavaScript의 기본 내장 함수인 <code>Math.random()</code>을 사용합니다. 이 함수는 0.0 이상 1.0 미만의 부동소수점 난수를 반환합니다. 과거에는 브라우저마다 이 스펙을 구현하는 내부 알고리즘이 달랐습니다. 어떤 브라우저는 보안에 취약한 오래된 알고리즘을 쓰기도 했죠. 하지만 최근의 모던 브라우저(Chrome, Firefox, Safari 등)는 대부분 v8 엔진을 기반으로 하며, 내부적으로 빠른 속도와 훌륭한 난수 품질을 보장하는 XorShift128+ 같은 최신 PRNG 알고리즘을 채택하고 있습니다.</p>
+            <p>Lotto Dreamer 역시 화면 전환의 깜빡임 없이 최고의 속도로 30개의 번호를 무작위 추출하기 위해 웹 표준 난수 시스템을 최적화하여 사용합니다. 수백만 번의 반복 테스트를 거쳐도 특정 번호에 편향되지 않는 통계적 공정성을 확보하고 있습니다.</p>
+
+            <h2>4. TRNG(True Random Number Generator): 진정한 무작위성</h2>
+            <p>그렇다면 진정한 무작위는 불가능할까요? 아닙니다. 하드웨어 기반의 TRNG를 사용하면 됩니다. TRNG는 컴퓨터 내부의 열적 잡음(Thermal noise), 방사성 동위원소의 붕괴 속도, 혹은 마우스 커서의 미세한 움직임 지연 시간처럼 예측이 아예 불가능한 물리적 현상을 측정하여 난수를 만듭니다. 암호학적으로 매우 중요한 은행의 보안 시스템이나 국가 기밀 통신망에서는 PRNG 대신 이러한 물리적 엔트로피(Entropy)를 기반으로 한 TRNG를 사용하여 예측 가능성을 원천 차단합니다.</p>
+
+            <h2>5. 결론: 좋은 도구를 위한 신뢰할 수 있는 난수</h2>
+            <p>로또 번호를 생성하는 일은 우주선을 쏘아 올리는 일이나 은행 서버를 해킹으로부터 방어하는 일에 비하면 가벼운 작업처럼 보일 수 있습니다. 하지만 사용자에게 '오늘 하루의 행운'을 점쳐보는 즐거움을 주기 위해서는 그 이면에 공정하고 치우침 없는 '잘 설계된 무작위'가 뒷받침되어야 합니다. Lotto Dreamer가 채택한 난수 생성 모델은 비록 하드웨어 보안 모듈 수준의 TRNG는 아닐지라도, 여러분의 재미있는 즐길 거리를 책임지기에는 통계적으로 티끌 하나 없이 완벽한 난수 품질을 자랑합니다.</p>
+            <p>Product Builder 팀은 앞으로도 일상의 불편함을 덜어주고 소소한 재미를 주는 정교한 난수 기반의 유틸리티들을 꾸준히 공개할 예정입니다.</p>
+        
+            </div>
+        </article>
+        
+        <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+            <a href="/blog/index.html" style="display: inline-block; padding: 12px 24px; background: rgba(255,255,255,0.05); color: #f8fafc; text-decoration: none; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">목록으로 돌아가기</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/terms.html">이용약관</a>
+            <a href="/privacy.html">개인정보처리방침</a>
+            <a href="/about.html">About Us</a>
+            <a href="/contact.html">Contact Us</a>
+        </div>
+        <div style="opacity: 0.6; text-align: center; font-size: 0.85rem;">
+            © <span id="year"></span> Product Builder. All rights reserved.
+        </div>
+    </footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

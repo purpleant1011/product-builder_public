@@ -18,17 +18,65 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             min-height: 100vh;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             box-sizing: border-box;
         }
 
-        .container {
-            max-width: 600px;
+        .header {
             width: 100%;
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #f8fafc;
+            text-decoration: none;
+            background: linear-gradient(135deg, #60a5fa, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #f8fafc;
+        }
+
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 40px 20px;
             text-align: center;
+            flex: 1;
         }
 
         h1 {
@@ -36,6 +84,7 @@
             margin-bottom: 2rem;
             background: linear-gradient(135deg, #60a5fa, #a855f7);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -87,15 +136,39 @@
 </head>
 
 <body>
+    <header class="header">
+        <nav class="nav">
+            <a href="/index.html" class="logo">Product Builder Hub</a>
+            <div class="nav-links">
+                <a href="/index.html" style="color: #f8fafc; font-weight: 700;">Home</a>
+                <a href="/blog/index.html">Blog</a>
+                <a href="/about.html">About</a>
+                <a href="/contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+
     <div class="container">
         <h1>Product Builder Hub</h1>
 
-        <a href="/lotto-generator/dist/index.html" class="project-card">
+        <a href="/lotto-generator/dist/index.html" class="project-card" style="max-width: 600px; margin: 0 auto;">
             <div class="project-title">
                 Lotto Dreamer <span class="badge">V2 UPGRADE!</span>
             </div>
             <p class="project-desc">행운의 여신과 함께하는 프리미엄 로또 번호 생성기. 한 번의 클릭으로 5게임의 행운을 만나보세요.</p>
         </a>
+
+        <!-- Blog Section Preview -->
+        <div style="margin-top: 4rem; text-align: left;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+                <h2 style="font-size: 1.5rem; color: #f8fafc; margin: 0;">Latest Insights</h2>
+                <a href="/blog/index.html" style="color: #60a5fa; text-decoration: none; font-size: 0.9rem;">View All
+                    Posts &rarr;</a>
+            </div>
+            <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6;">난수 생성, 확률론, 통계학 등 다양한 주제에 대한 깊이 있는 정보와
+                Product Builder 팀의 기술 블로그를 곧 만나보실 수 있습니다. 양질의 콘텐츠가 매주 업데이트 됩니다.</p>
+        </div>
 
         <!-- SEO Content Section -->
         <div
@@ -115,57 +188,16 @@
         <footer
             style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; align-items: center; gap: 1rem; opacity: 0.8; font-size: 0.85rem;">
             <div style="display: flex; gap: 1.5rem;">
-                <button onclick="openModal('terms')"
-                    style="background: none; border: none; color: inherit; cursor: pointer; text-decoration: underline;">이용약관</button>
-                <button onclick="openModal('privacy')"
-                    style="background: none; border: none; color: inherit; cursor: pointer; text-decoration: underline;">개인정보처리방침</button>
+                <a href="/terms.html" style="color: inherit; text-decoration: underline;">이용약관</a>
+                <a href="/privacy.html" style="color: inherit; text-decoration: underline;">개인정보처리방침</a>
+                <a href="/about.html" style="color: inherit; text-decoration: underline;">About Us</a>
+                <a href="/contact.html" style="color: inherit; text-decoration: underline;">Contact Us</a>
             </div>
             <div style="opacity: 0.6; text-align: center;">
                 © 2024 Product Builder. All rights reserved.
             </div>
         </footer>
     </div>
-
-    <!-- Modal Overlay -->
-    <div id="modalOverlay"
-        style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 1000; justify-content: center; align-items: center; padding: 20px;">
-        <div
-            style="background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2rem; max-width: 600px; width: 100%; max-height: 80vh; overflow-y: auto; position: relative; color: #f8fafc; text-align: left;">
-            <button onclick="closeModal()"
-                style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: #f8fafc; font-size: 1.5rem; cursor: pointer; opacity: 0.7;">&times;</button>
-            <div id="modalContent" style="line-height: 1.6; font-size: 0.95rem; opacity: 0.9;"></div>
-        </div>
-    </div>
-
-    <script>
-        const termsText = `
-            <h2 style="margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">이용약관</h2>
-            <p><strong>제1조 (목적)</strong><br />본 약관은 Product Builder(이하 "서비스")가 제공하는 웹 애플리케이션 및 모음집의 이용과 관련하여 회사와 회원과의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
-            <br />
-            <p><strong>제2조 (책임 제한)</strong><br />본 서비스 내에서 제공되는 각종 생성기 및 도구들을 사용하여 발생한 금전적 손실이나 기타 결과에 대해 서비스 제공자는 일체의 법적 책임을 지지 않습니다.</p>
-        `;
-
-        const privacyText = `
-            <h2 style="margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">개인정보처리방침</h2>
-            <p><strong>1. 기본 원칙</strong><br />Product Builder는 사용자의 개인정보를 중요시하며, 본 허브 페이지는 어떠한 민감한 개인식별정보도 무단으로 수집하거나 저장하지 않습니다.</p>
-            <br />
-            <p><strong>2. 광고 게재</strong><br />본 사이트는 Google AdSense 파트너 광고를 게재할 수 있습니다. 해당 공급업체는 쿠키를 통해 맞춤 광고를 제공할 수 있으며, 사용자는 브라우저 설정을 통해 거부할 수 있습니다.</p>
-        `;
-
-        function openModal(type) {
-            document.getElementById('modalContent').innerHTML = type === 'terms' ? termsText : privacyText;
-            document.getElementById('modalOverlay').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('modalOverlay').style.display = 'none';
-        }
-
-        // Close on outside click
-        document.getElementById('modalOverlay').addEventListener('click', function (e) {
-            if (e.target === this) closeModal();
-        });
-    </script>
 </body>
 
 </html>

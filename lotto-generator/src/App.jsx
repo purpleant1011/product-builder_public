@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Sun, Moon, Sparkles, RefreshCcw, Copy, Check, Send, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
-import { LegalModals } from './components/LegalModals';
-
 function App() {
   const [isDark, setIsDark] = useState(false);
   const [lottoSets, setLottoSets] = useState([]);
@@ -296,7 +294,15 @@ function App() {
           </details>
         </div>
 
-        <LegalModals isDark={isDark} />
+        <footer className="footer" style={{ marginTop: '40px', paddingBottom: '20px', borderTop: '1px solid ' + (isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'), paddingTop: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+          <div style={{ display: 'flex', gap: '15px', fontSize: '0.9rem', opacity: 0.8 }}>
+            <a href="/terms.html" style={{ color: 'inherit', textDecoration: 'underline' }}>이용약관</a>
+            <a href="/privacy.html" style={{ color: 'inherit', textDecoration: 'underline' }}>개인정보처리방침</a>
+          </div>
+          <div style={{ opacity: 0.6, fontSize: '0.85rem', marginTop: '5px' }}>
+            © {new Date().getFullYear()} Product Builder. All rights reserved.
+          </div>
+        </footer>
 
       </motion.div>
 
