@@ -367,6 +367,7 @@ function generateHTML() {
             '        </div>\n' +
             '    </footer>\n' +
             '    <script>document.getElementById(\'year\').textContent = new Date().getFullYear();</script>\n' +
+            '    <script src="/translation.js"></script>\n' +
             '</body>\n' +
             '</html>';
 
@@ -471,6 +472,7 @@ function generateHTML() {
         '        </div>\n' +
         '    </footer>\n' +
         '    <script>document.getElementById(\'year\').textContent = new Date().getFullYear();</script>\n' +
+        '    <script src="/translation.js"></script>\n' +
         '</body>\n' +
         '</html>';
 
