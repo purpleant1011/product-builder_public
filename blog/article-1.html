@@ -91,11 +91,16 @@
 
     <main class="container">
         <article>
-            <div class="article-header">
+            <header class="article-header">
                 <h1>자바스크립트 Math.random()은 정말 완벽한 난수일까?</h1>
-                <div class="meta">발행일: 2024년 2월 24일 | 작성자: Product Builder Team</div>
-            </div>
-            <div class="content">
+                <div class="meta">발행일: <time datetime="2026-03-05">2026-03-05</time> | 작성자: Product Builder Team</div>
+                <div style="margin-top: 1.5rem; text-align: left; background: rgba(30, 41, 59, 0.6); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(168, 85, 247, 0.3);">
+                    <p class="answer-summary" style="margin: 0; line-height: 1.6; font-size: 0.95rem;">
+                        <strong>요약:</strong> 프론트엔드 환경에서 생성되는 무작위 숫자의 이면. 로또 번호 생성기부터 암호화 기술까지, 난수(Random Number)의 본질을 파헤칩니다.
+                    </p>
+                </div>
+            </header>
+            <section class="content">
                 
             <h2>1. 서론: '무작위'라는 환상</h2>
             <p>우리는 일상에서 '무작위(Random)'라는 단어를 자주 사용합니다. 동전을 던지거나 주사위를 굴릴 때 나오는 결과를 무작위라고 부르죠. 하지만 엄밀히 말해 고전 역학의 관점에서 동전 던지기는 초기 조건(힘, 각도, 공기 저항)을 완벽히 안다면 결과를 예측할 수 있는 결정론적 사건입니다. 그렇다면 모든 것이 0과 1 논리 회로로 이루어진 컴퓨터는 어떻게 완벽히 무작위인 숫자를 만들어낼 수 있을까요? 결론부터 말하자면, 우리가 일상적으로 사용하는 대부분의 웹 프로그램은 '진짜 무작위'가 아닌 '유사 무작위(Pseudo-Random)'를 사용합니다.</p>
@@ -114,7 +119,7 @@
             <h2>5. 결론: 일상의 도구를 위한 충분한 무작위</h2>
             <p>웹상에서 로또 번호 6자리를 골라내거나 이벤트 당첨자를 추첨하는 일은 국가망 통신을 방어하는 일에 비하면 아주 가벼운 작업입니다. 따라서 앞서 설명한 브라우저 자체 내장 V8 엔진의 <code>Math.random()</code> 만으로도 통계적으로 티끌 하나 없이 완벽하고 공정한 숫자를 얻어내기에 무리가 없습니다. 잘 짜인 코드는 번호의 편향이나 뭉침 현상 없이 수백만 번의 반복 테스트에서도 고른 분포를 보여주기 때문입니다. 일상에 약간의 편의와 재미를 더하는 도구에 있어 프론트엔드의 무작위 알고리즘은 이미 그 역할을 훌륭히 수행하고 있습니다.</p>
         
-            </div>
+            </section>
         </article>
         
         <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">

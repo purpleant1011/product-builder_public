@@ -252,33 +252,52 @@
     </header>
 
     <main class="container">
-        <h1>Contact Us</h1>
-        <p style="text-align: center; opacity: 0.8; margin-bottom: 2rem; max-width: 600px;">Product Builder Hub를 이용해 주셔서
-            감사합니다. 당사의 무작위 난수 생성기(로또 번호) 도구, 환율 계산기 등 웹 애플리케이션 사용 중 발생한 기술적 문제 사항이나 불편했던 점, 그리고 블로그 콘텐츠 제안 및 비즈니스 제휴/광고
-            입점 문의 등 모든 의견을 아래 양식을 통해 자유롭게 남겨주시면 담당 파트에서 확인 후 성심성의껏 답변드리겠습니다.</p>
+        <article style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <header style="text-align: center; margin-bottom: 2rem; max-width: 600px;">
+                <h1 style="margin-bottom: 0.5rem;">Contact Us (연락처 및 제휴 문의)</h1>
+                <p class="meta" style="opacity: 0.8; font-size: 0.9rem; margin-bottom: 1.5rem;">
+                    작성: Product Builder Team · 최종 업데이트: <time datetime="2026-03-05">2026-03-05</time>
+                </p>
+                <div
+                    style="text-align: left; background: rgba(30, 41, 59, 0.6); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(168, 85, 247, 0.3); margin-bottom: 1.5rem;">
+                    <p class="answer-summary" style="margin: 0; line-height: 1.6;">
+                        <strong>요약:</strong> 웹 애플리케이션 사용 중 발생한 기술적 문제, 피드백, 또는 비즈니스 제휴 문의를 남기실 수 있는 공식 연락망입니다. 통상적으로 접수된
+                        문의는 24시간 내에 담당 부서에서 이메일로 답변을 드립니다.
+                    </p>
+                </div>
+            </header>
 
-        <div class="content-box">
-            <div id="status-message"></div>
+            <section class="content-box">
+                <div id="status-message"></div>
 
-            <form id="contactForm" action="https://formspree.io/f/mojnowrk" method="POST">
-                <div class="form-group">
-                    <label for="name">이름 (Name) / 회사명</label>
-                    <input type="text" id="name" name="name" class="form-control" required
-                        placeholder="예: (주)프로덕트빌더 길동홍">
-                </div>
-                <div class="form-group">
-                    <label for="email">회신받을 이메일 주소 (Email)</label>
-                    <input type="email" id="email" name="email" class="form-control" required
-                        placeholder="예: contact@domain.com">
-                </div>
-                <div class="form-group">
-                    <label for="message">문의 내용 (Message)</label>
-                    <textarea id="message" name="message" class="form-control" required
-                        placeholder="자유롭게 문의하실 내용을 작성해 주세요. 통상적으로 24시간 내에 답변을 드립니다."></textarea>
-                </div>
-                <button type="submit" class="btn-submit" id="submitBtn">문의 보내기 (Send Message)</button>
-            </form>
-        </div>
+                <address
+                    style="font-style: normal; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); opacity: 0.9; text-align: center;">
+                    <strong>Product Builder Hub 공식 지원팀</strong><br>
+                    Email: <a href="mailto:contact@product-builder.com"
+                        style="color: #60a5fa;">contact@product-builder.com</a><br>
+                    운영 시간: 평일 10:00 - 18:00 (KST)
+                </address>
+
+                <form id="contactForm" action="https://formspree.io/f/mojnowrk" method="POST">
+                    <div class="form-group">
+                        <label for="name">이름 (Name) / 회사명</label>
+                        <input type="text" id="name" name="name" class="form-control" required
+                            placeholder="예: (주)프로덕트빌더 길동홍">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">회신받을 이메일 주소 (Email)</label>
+                        <input type="email" id="email" name="email" class="form-control" required
+                            placeholder="예: contact@domain.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">문의 내용 (Message)</label>
+                        <textarea id="message" name="message" class="form-control" required
+                            placeholder="자유롭게 문의하실 내용을 작성해 주세요. 통상적으로 24시간 내에 답변을 드립니다."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit" id="submitBtn">문의 보내기 (Send Message)</button>
+                </form>
+            </section>
+        </article>
     </main>
 
     <footer>

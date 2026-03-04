@@ -344,13 +344,18 @@ function generateHTML() {
             '\n' +
             '    <main class="container">\n' +
             '        <article>\n' +
-            '            <div class="article-header">\n' +
+            '            <header class="article-header">\n' +
             '                <h1>' + article.title + '</h1>\n' +
-            '                <div class="meta">발행일: 2024년 2월 24일 | 작성자: Product Builder Team</div>\n' +
-            '            </div>\n' +
-            '            <div class="content">\n' +
+            '                <div class="meta">발행일: <time datetime="2026-03-05">2026-03-05</time> | 작성자: Product Builder Team</div>\n' +
+            '                <div style="margin-top: 1.5rem; text-align: left; background: rgba(30, 41, 59, 0.6); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(168, 85, 247, 0.3);">\n' +
+            '                    <p class="answer-summary" style="margin: 0; line-height: 1.6; font-size: 0.95rem;">\n' +
+            '                        <strong>요약:</strong> ' + article.excerpt + '\n' +
+            '                    </p>\n' +
+            '                </div>\n' +
+            '            </header>\n' +
+            '            <section class="content">\n' +
             '                ' + article.content + '\n' +
-            '            </div>\n' +
+            '            </section>\n' +
             '        </article>\n' +
             '        \n' +
             '        <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">\n' +
