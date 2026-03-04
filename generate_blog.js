@@ -123,6 +123,14 @@ function generateHTML() {
             '        .footer-links { display: flex; gap: 1.5rem; opacity: 0.8; font-size: 0.85rem; }\n' +
             '        .footer-links a { color: inherit; text-decoration: underline; transition: opacity 0.2s; }\n' +
             '    </style>\n' +
+            '    <!-- Google tag (gtag.js) -->\n' +
+            '    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HE0T7V263S"></script>\n' +
+            '    <script>\n' +
+            '      window.dataLayer = window.dataLayer || [];\n' +
+            '      function gtag(){dataLayer.push(arguments);}\n' +
+            '      gtag(\'js\', new Date());\n\n' +
+            '      gtag(\'config\', \'G-HE0T7V263S\');\n' +
+            '    </script>\n' +
             '</head>\n' +
             '<body>\n' +
             '    <header class="header">\n' +
@@ -211,6 +219,14 @@ function generateHTML() {
         '        .footer-links { display: flex; gap: 1.5rem; opacity: 0.8; font-size: 0.85rem; }\n' +
         '        .footer-links a { color: inherit; text-decoration: underline; transition: opacity 0.2s; }\n' +
         '    </style>\n' +
+        '    <!-- Google tag (gtag.js) -->\n' +
+        '    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HE0T7V263S"></script>\n' +
+        '    <script>\n' +
+        '      window.dataLayer = window.dataLayer || [];\n' +
+        '      function gtag(){dataLayer.push(arguments);}\n' +
+        '      gtag(\'js\', new Date());\n\n' +
+        '      gtag(\'config\', \'G-HE0T7V263S\');\n' +
+        '    </script>\n' +
         '</head>\n' +
         '<body>\n' +
         '    <header class="header">\n' +
