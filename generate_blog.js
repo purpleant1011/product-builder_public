@@ -131,6 +131,14 @@ function generateHTML() {
             '      gtag(\'js\', new Date());\n\n' +
             '      gtag(\'config\', \'G-HE0T7V263S\');\n' +
             '    </script>\n' +
+            '    <!-- Microsoft Clarity -->\n' +
+            '    <script type="text/javascript">\n' +
+            '        (function(c,l,a,r,i,t,y){\n' +
+            '            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\n' +
+            '            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;\n' +
+            '            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\n' +
+            '        })(window, document, "clarity", "script", "vq8rc6yoj3");\n' +
+            '    </script>\n' +
             '</head>\n' +
             '<body>\n' +
             '    <header class="header">\n' +
@@ -226,6 +234,14 @@ function generateHTML() {
         '      function gtag(){dataLayer.push(arguments);}\n' +
         '      gtag(\'js\', new Date());\n\n' +
         '      gtag(\'config\', \'G-HE0T7V263S\');\n' +
+        '    </script>\n' +
+        '    <!-- Microsoft Clarity -->\n' +
+        '    <script type="text/javascript">\n' +
+        '        (function(c,l,a,r,i,t,y){\n' +
+        '            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\n' +
+        '            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;\n' +
+        '            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\n' +
+        '        })(window, document, "clarity", "script", "vq8rc6yoj3");\n' +
         '    </script>\n' +
         '</head>\n' +
         '<body>\n' +
