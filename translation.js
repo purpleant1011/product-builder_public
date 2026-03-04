@@ -7,9 +7,9 @@ style.textContent = `
     /* Translate Widget Container */
     #custom-translate-container {
         position: fixed;
-        bottom: 25px;
-        right: 25px;
-        z-index: 10000;
+        top: 20px;
+        right: 20px;
+        z-index: 99999;
         display: flex;
         align-items: center;
         gap: 10px;
