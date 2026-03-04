@@ -258,6 +258,9 @@ function generateHTML() {
             '    <meta charset="UTF-8">\n' +
             '    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
             '    <meta name="google-adsense-account" content="ca-pub-6100551786781834">\n' +
+            '    <meta name="robots" content="index, follow">\n' +
+            '    <meta name="keywords" content="Product Builder, 테크 블로그, 개발, 난수 생성, 알고리즘, 디자인">\n' +
+            '    <link rel="icon" type="image/svg+xml" href="/favicon.svg">\n' +
             '    <title>' + article.title + ' - Product Builder Blog</title>\n' +
             '    <meta name="description" content="' + article.excerpt.replace(/"/g, '&quot;') + '">\n' +
             '    <link rel="canonical" href="https://product-builder-public-t8b.pages.dev/blog/article-' + article.id + '.html">\n' +
@@ -388,6 +391,9 @@ function generateHTML() {
         '    <meta charset="UTF-8">\n' +
         '    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
         '    <meta name="google-adsense-account" content="ca-pub-6100551786781834">\n' +
+        '    <meta name="robots" content="index, follow">\n' +
+        '    <meta name="keywords" content="Product Builder, 블로그 메인, 테크 인사이트, 웹 유틸리티">\n' +
+        '    <link rel="icon" type="image/svg+xml" href="/favicon.svg">\n' +
         '    <title>테크 & 라이프 인사이트 블로그 - Product Builder Hub</title>\n' +
         '    <meta name="description" content="수학, 통계, 기술 발전과 일상 속 숨겨진 심리학적 인사이트까지. Product Builder 팀이 연재하는 심층 블로그입니다.">\n' +
         '    <link rel="canonical" href="https://product-builder-public-t8b.pages.dev/blog/index.html">\n' +
