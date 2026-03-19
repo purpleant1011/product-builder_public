@@ -1,112 +1,174 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
+    <html lang="ko">
+      <head>
+        
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="zXNqTgnAS36FBBnvfpLXH49pqZ-6LGzRd4ihomkeRLg">
     <meta name="google-adsense-account" content="ca-pub-6100551786781834">
     <meta name="robots" content="index, follow">
-    <meta name="keywords" content="Product Builder, 블로그 메인, 테크 인사이트, 웹 유틸리티">
+    <meta name="keywords" content="실무 가이드, 랜덤 추첨 운영, 퍼센트 계산, 일정 관리, Product Builder Hub">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <title>테크 & 라이프 인사이트 블로그 - Product Builder Hub</title>
-    <meta name="description" content="수학, 통계, 기술 발전과 일상 속 숨겨진 심리학적 인사이트까지. Product Builder 팀이 연재하는 심층 블로그입니다.">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+    <title>Guides | Product Builder Hub</title>
+    <meta name="description" content="브라우저 도구를 실제 업무와 일상에 더 잘 쓰기 위한 실무형 가이드와 노트를 모은 페이지입니다.">
     <link rel="canonical" href="https://product-builder-public-t8b.pages.dev/blog/index.html">
-    <meta property="og:title" content="인사이트 블로그 - Product Builder Hub">
-    <meta property="og:description" content="수학, 통계, 난수 프론트엔드 최적화 등 깊이 있는 테크 인사이트 정보를 확인하세요.">
+    <meta property="og:title" content="Guides | Product Builder Hub">
+    <meta property="og:description" content="브라우저 도구를 실제 업무와 일상에 더 잘 쓰기 위한 실무형 가이드와 노트를 모은 페이지입니다.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://product-builder-public-t8b.pages.dev/blog/index.html">
+    <meta property="og:image" content="https://product-builder-public-t8b.pages.dev/favicon.svg">
     <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="stylesheet" href="/assets/site.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6100551786781834" crossorigin="anonymous"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;700&display=swap');
-        body { font-family: 'Pretendard', sans-serif; background-color: #0f172a; color: #f8fafc; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding: 0; }
-        .header { width: 100%; background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0; z-index: 100; }
-        .nav { max-width: 800px; margin: 0 auto; padding: 1rem 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 700; font-size: 1.2rem; color: #f8fafc; text-decoration: none; background: linear-gradient(135deg, #60a5fa, #a855f7); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-links { display: flex; gap: 1.5rem; }
-        .nav-links a { color: #cbd5e1; text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
-        .nav-links a:hover { color: #f8fafc; }
-        .container { max-width: 800px; width: 100%; padding: 40px 20px; flex: 1; }
-        h1 { font-size: 2.2rem; margin-bottom: 0.5rem; text-align: center; }
-        .subtitle { text-align: center; color: #94a3b8; margin-bottom: 3rem; }
-        
-        .post-list { display: flex; flex-direction: column; gap: 1.5rem; }
-        .post-card { background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 2rem; text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; display: block; }
-        .post-card:hover { transform: translateY(-3px); background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(96, 165, 250, 0.3); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-        .post-title { font-size: 1.3rem; margin: 0 0 1rem 0; color: #f8fafc; }
-        .post-excerpt { color: #cbd5e1; line-height: 1.6; font-size: 0.95rem; margin-bottom: 1.5rem; }
-        .read-more { color: #60a5fa; font-size: 0.9rem; font-weight: 600; }
-        
-        footer { width: 100%; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 4rem; }
-        .footer-links { display: flex; gap: 1.5rem; opacity: 0.8; font-size: 0.85rem; }
-        .footer-links a { color: inherit; text-decoration: underline; transition: opacity 0.2s; }
-    </style>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HE0T7V263S"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-HE0T7V263S');
     </script>
-    <!-- Microsoft Clarity -->
     <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "vq8rc6yoj3");
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, 'clarity', 'script', 'vq8rc6yoj3');
     </script>
-</head>
-<body>
-    <header class="header">
-        <nav class="nav">
-            <a href="/index.html" class="logo">Product Builder Hub</a>
-            <div class="nav-links">
-                <a href="/index.html">Home</a>
-                <a href="/blog/index.html" style="color: #f8fafc; font-weight: 700;">Blog</a>
-                <a href="/about.html">About</a>
-                <a href="/contact.html">Contact</a>
-            </div>
-        </nav>
-    </header>
-
-    <main class="container">
-        <h1>Insights & Stories</h1>
-        <p class="subtitle">기술, 확률, 통계, 그리고 재미있는 도구 개발 이야기</p>
+    
+  
+      </head>
+      <body>
         
-        <div class="post-list">
-            <a href="/blog/article-1.html" class="post-card"><h2 class="post-title">자바스크립트 Math.random()은 정말 완벽한 난수일까?</h2><p class="post-excerpt">프론트엔드 환경에서 생성되는 무작위 숫자의 이면. 로또 번호 생성기부터 암호화 기술까지, 난수(Random Number)의 본질을 파헤칩니다.</p><div class="read-more">글 읽기 &rarr;</div></a>
-<a href="/blog/article-2.html" class="post-card"><h2 class="post-title">역대 로또 당첨 번호에서 가장 많이 나온 숫자들의 통계적 오류 분석</h2><p class="post-excerpt">1번부터 45번까지 특정 숫자가 유독 많이 나온 이유는 무엇일까? 확률의 함정과 독립 시행의 개념을 바탕으로 빅데이터 분석의 오류를 짚어봅니다.</p><div class="read-more">글 읽기 &rarr;</div></a>
-<a href="/blog/article-3.html" class="post-card"><h2 class="post-title">프론트엔드 환경에서 최적화된 확률 기반 난수 생성기 만들기</h2><p class="post-excerpt">React와 Vite를 기반으로, 퍼포먼스 저하 없이 시각적으로 미려한 유틸리티를 개발하는 프론트엔드 엔지니어링 가이드입니다.</p><div class="read-more">글 읽기 &rarr;</div></a>
-<a href="/blog/article-4.html" class="post-card"><h2 class="post-title">사람들이 로또 번호를 자동으로 선택할 때의 심리적 안정감</h2><p class="post-excerpt">우리는 왜 숫자를 직접 고르는 것을 포기하고 기계의 난수 생성 알고리즘에 운명을 맡길까요? 자동 선택 이면에 숨겨진 인간의 심리학을 다룹니다.</p><div class="read-more">글 읽기 &rarr;</div></a>
-<a href="/blog/article-5.html" class="post-card"><h2 class="post-title">로또 1등에 당첨될 확률(814만 분의 1)을 체감할 수 있는 실생활 비교</h2><p class="post-excerpt">8,145,060분의 1 이라는 비현실적인 확률 분포 값을 일상생활에서 쉽게 마주칠 수 있는 상황들에 빗대어 흥미롭게 분석해 봅니다.</p><div class="read-more">글 읽기 &rarr;</div></a>
-<a href="/blog/article-6.html" class="post-card"><h2 class="post-title">Product Builder가 로또 생성기를 첫 프로젝트로 선택한 기술적 이유</h2><p class="post-excerpt">우리의 평범한 일상 속 불편함을 우아하게 덜어주는 기술. 단순해 보이는 난수 추출 유틸리티 속에 담긴 Product Builder 팀의 개발 비전을 소개합니다.</p><div class="read-more">글 읽기 &rarr;</div></a>
-<a href="/blog/article-7.html" class="post-card"><h2 class="post-title">우연과 필연: 난수 생성 알고리즘의 진화 과정</h2><p class="post-excerpt">컴퓨터 초기 역사 폰 노이만의 고안부터 모던 브라우저 V8 엔진의 난수에 이르기까지 수학적 진보의 궤적을 짚어봅니다.</p><div class="read-more">글 읽기 &rarr;</div></a>
-<a href="/blog/article-8.html" class="post-card"><h2 class="post-title">전 세계 다양한 양식의 메가 로또 시스템 비교 분석</h2><p class="post-excerpt">한국의 동행복권 6/45 시스템을 넘어 수학적 확률 체계가 다른 세계 각국의 유명 복권 시스템을 비교 분석해보는 정보 포스팅.</p><div class="read-more">글 읽기 &rarr;</div></a>
-<a href="/blog/article-9.html" class="post-card"><h2 class="post-title">Product Builder 허브가 추구하는 마이크로 프론트엔드 비전</h2><p class="post-excerpt">거대 플랫폼의 홍수 속 기능 단위의 유연하고 가벼운 애플리케이션들을 만들어 나가는 프로젝트 개발 문화 전반의 전략적 철학을 담습니다.</p><div class="read-more">글 읽기 &rarr;</div></a>
-<a href="/blog/article-10.html" class="post-card"><h2 class="post-title">행운을 믿는 인지 심리학: 우리는 왜 기꺼이 비용을 지불하고 복권을 사는가?</h2><p class="post-excerpt">확률적으로 매우 희박하고 불리한 베팅임에도 인류가 멈추지 않고 오락으로서 기꺼이 소비하는 행위에 대한 심리 신경망 분석과 기댓값 고찰입니다.</p><div class="read-more">글 읽기 &rarr;</div></a>
-<a href="/blog/article-11.html" class="post-card"><h2 class="post-title">Product Builder Hub 인사이트 아티클: 1부 - 프론트엔드 최적화와 UX 원칙의 이면</h2><p class="post-excerpt">더 나은 사용자 중심 유틸리티 생태계를 구축하기 위한 소프트웨어 디자인 원칙과 기술 분석 시리즈 파트 1 입니다.</p><div class="read-more">글 읽기 &rarr;</div></a>
-<a href="/blog/article-12.html" class="post-card"><h2 class="post-title">Product Builder Hub 인사이트 아티클: 2부 - 프론트엔드 최적화와 UX 원칙의 이면</h2><p class="post-excerpt">더 나은 사용자 중심 유틸리티 생태계를 구축하기 위한 소프트웨어 디자인 원칙과 기술 분석 시리즈 파트 2 입니다.</p><div class="read-more">글 읽기 &rarr;</div></a>
-<a href="/blog/article-13.html" class="post-card"><h2 class="post-title">Product Builder Hub 인사이트 아티클: 3부 - 프론트엔드 최적화와 UX 원칙의 이면</h2><p class="post-excerpt">더 나은 사용자 중심 유틸리티 생태계를 구축하기 위한 소프트웨어 디자인 원칙과 기술 분석 시리즈 파트 3 입니다.</p><div class="read-more">글 읽기 &rarr;</div></a>
-<a href="/blog/article-14.html" class="post-card"><h2 class="post-title">Product Builder Hub 인사이트 아티클: 4부 - 프론트엔드 최적화와 UX 원칙의 이면</h2><p class="post-excerpt">더 나은 사용자 중심 유틸리티 생태계를 구축하기 위한 소프트웨어 디자인 원칙과 기술 분석 시리즈 파트 4 입니다.</p><div class="read-more">글 읽기 &rarr;</div></a>
-<a href="/blog/article-15.html" class="post-card"><h2 class="post-title">Product Builder Hub 인사이트 아티클: 5부 - 프론트엔드 최적화와 UX 원칙의 이면</h2><p class="post-excerpt">더 나은 사용자 중심 유틸리티 생태계를 구축하기 위한 소프트웨어 디자인 원칙과 기술 분석 시리즈 파트 5 입니다.</p><div class="read-more">글 읽기 &rarr;</div></a>
-
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="/" aria-label="Product Builder Hub 홈">
+          <span class="brand__mark">PB</span>
+          <span class="brand__text">
+            <span class="brand__title">Product Builder Hub</span>
+            <span class="brand__subtitle">Browser-first utility studio</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="/">Home</a><a href="/tools/index.html">Tools</a><a href="/blog/index.html" aria-current="page">Guides</a><a href="/about.html">About</a><a href="/contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+  
+        <main class="site-main">
+          
+    
+    <section class="page-intro">
+      <span class="page-intro__eyebrow">Guides</span>
+      <h1>가이드 & 노트</h1>
+      <p class="lede">도구를 왜 써야 하는지, 숫자를 어떻게 해석해야 하는지, 운영 시 무엇을 주의해야 하는지에 초점을 맞춘 문서를 모았습니다.</p>
+      <div class="article-meta"><span>짧고 실용적인 문서</span><span>도구와 문서의 1:1 연결</span><span>최종 업데이트 2026-03-20</span></div>
+    </section>
+  
+    <section class="section">
+      <div class="grid grid--3">
+    <article class="guide-card">
+      <div class="guide-card__top">
+        <span class="badge">Privacy</span>
+      </div>
+      <h3>브라우저 기반 도구가 개인정보 측면에서 유리한 이유</h3>
+      <p>작은 유틸리티를 고를 때 왜 “서버로 보내는가, 브라우저에서 처리하는가”를 먼저 봐야 하는지 정리한 가이드입니다.</p>
+      <div class="article-meta">
+        <span>6분</span>
+        <span>2026-03-20</span>
+      </div>
+      <a class="card-link" href="/blog/article-1.html">가이드 읽기</a>
+    </article>
+  
+    <article class="guide-card">
+      <div class="guide-card__top">
+        <span class="badge">Operations</span>
+      </div>
+      <h3>랜덤 추첨을 공정하게 보이게 만드는 운영 체크리스트</h3>
+      <p>도구의 무작위성보다 운영 절차의 투명성이 더 중요한 이유를 정리한 랜덤 추첨 운영 가이드입니다.</p>
+      <div class="article-meta">
+        <span>5분</span>
+        <span>2026-03-20</span>
+      </div>
+      <a class="card-link" href="/blog/article-2.html">가이드 읽기</a>
+    </article>
+  
+    <article class="guide-card">
+      <div class="guide-card__top">
+        <span class="badge">Analysis</span>
+      </div>
+      <h3>퍼센트 변화율을 보고서에 쓸 때 자주 생기는 실수 6가지</h3>
+      <p>증가율, 감소율, 절대값 차이를 섞어 쓰면서 생기는 대표적인 실수를 정리한 실무 가이드입니다.</p>
+      <div class="article-meta">
+        <span>7분</span>
+        <span>2026-03-20</span>
+      </div>
+      <a class="card-link" href="/blog/article-3.html">가이드 읽기</a>
+    </article>
+  
+    <article class="guide-card">
+      <div class="guide-card__top">
+        <span class="badge">Planning</span>
+      </div>
+      <h3>일정 계산에서 포함 기준과 제외 기준을 구분해야 하는 이유</h3>
+      <p>같은 날짜 범위도 계산 기준에 따라 결과가 달라지는 이유와 실무 커뮤니케이션 팁을 정리한 글입니다.</p>
+      <div class="article-meta">
+        <span>5분</span>
+        <span>2026-03-20</span>
+      </div>
+      <a class="card-link" href="/blog/article-4.html">가이드 읽기</a>
+    </article>
+  
+    <article class="guide-card">
+      <div class="guide-card__top">
+        <span class="badge">Team Ops</span>
+      </div>
+      <h3>회의 비용을 계산해 보면 보이는 팀 운영 습관</h3>
+      <p>회의 비용을 금액으로 환산했을 때 팀이 무엇을 다시 보게 되는지 정리한 운영 개선 글입니다.</p>
+      <div class="article-meta">
+        <span>6분</span>
+        <span>2026-03-20</span>
+      </div>
+      <a class="card-link" href="/blog/article-5.html">가이드 읽기</a>
+    </article>
+  
+    <article class="guide-card">
+      <div class="guide-card__top">
+        <span class="badge">Entertainment</span>
+      </div>
+      <h3>로또 번호 생성기는 무엇을 할 수 있고 무엇을 보장하지 않는가</h3>
+      <p>무작위 번호 생성기라는 도구의 역할과 한계를 분명히 정리한 엔터테인먼트 도구 안내 글입니다.</p>
+      <div class="article-meta">
+        <span>5분</span>
+        <span>2026-03-20</span>
+      </div>
+      <a class="card-link" href="/blog/article-6.html">가이드 읽기</a>
+    </article>
+  </div>
+    </section>
+  
+        </main>
+        
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="footer-meta">
+          <a class="brand" href="/" aria-label="Product Builder Hub 홈">
+            <span class="brand__mark">PB</span>
+            <span class="brand__text">
+              <span class="brand__title">Product Builder Hub</span>
+              <span class="brand__subtitle">Lightweight tools, clearer decisions</span>
+            </span>
+          </a>
+          <p>설치 없이 바로 쓰는 브라우저 기반 도구와 실무형 가이드를 운영하는 Product Builder Hub입니다. 도구와 가이드는 사용자가 기능을 이해하고 신뢰할 수 있도록 운영 원칙, 개인정보 정책, 업데이트 기준을 함께 공개합니다.</p>
+          <p class="footer-note">© <span data-year></span> Product Builder Hub. Some pages may display advertising after AdSense approval to support maintenance and documentation.</p>
         </div>
-    </main>
-
-    <footer>
-        <div class="footer-links">
-            <a href="/terms.html">이용약관</a>
-            <a href="/privacy.html">개인정보처리방침</a>
-            <a href="/about.html">About Us</a>
-            <a href="/contact.html">Contact Us</a>
+        <div>
+          <div class="footer-links"><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/editorial-policy.html">Editorial Policy</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="https://github.com/purpleant1011/product-builder_public" target="_blank" rel="noopener noreferrer">GitHub</a></div>
         </div>
-        <div style="opacity: 0.6; text-align: center; font-size: 0.85rem;">
-            © <span id="year"></span> Product Builder. All rights reserved.
-        </div>
+      </div>
     </footer>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-    <script src="/translation.js"></script>
-</body>
-</html>
+  
+        <script src="/assets/site.js"></script>
+      </body>
+    </html>

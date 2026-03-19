@@ -1,142 +1,146 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
+    <html lang="ko">
+      <head>
+        
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="zXNqTgnAS36FBBnvfpLXH49pqZ-6LGzRd4ihomkeRLg">
     <meta name="google-adsense-account" content="ca-pub-6100551786781834">
     <meta name="robots" content="index, follow">
-    <meta name="keywords" content="Product Builder, 테크 블로그, 개발, 난수 생성, 알고리즘, 디자인">
+    <meta name="keywords" content="일정 계산에서 포함 기준과 제외 기준을 구분해야 하는 이유, Planning, Product Builder Hub">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <title>사람들이 로또 번호를 자동으로 선택할 때의 심리적 안정감 - Product Builder Blog</title>
-    <meta name="description" content="우리는 왜 숫자를 직접 고르는 것을 포기하고 기계의 난수 생성 알고리즘에 운명을 맡길까요? 자동 선택 이면에 숨겨진 인간의 심리학을 다룹니다.">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+    <title>일정 계산에서 포함 기준과 제외 기준을 구분해야 하는 이유 | Product Builder Hub Guides</title>
+    <meta name="description" content="같은 날짜 범위도 계산 기준에 따라 결과가 달라지는 이유와 실무 커뮤니케이션 팁을 정리한 글입니다.">
     <link rel="canonical" href="https://product-builder-public-t8b.pages.dev/blog/article-4.html">
-    <meta property="og:title" content="사람들이 로또 번호를 자동으로 선택할 때의 심리적 안정감">
-    <meta property="og:description" content="우리는 왜 숫자를 직접 고르는 것을 포기하고 기계의 난수 생성 알고리즘에 운명을 맡길까요? 자동 선택 이면에 숨겨진 인간의 심리학을 다룹니다.">
+    <meta property="og:title" content="일정 계산에서 포함 기준과 제외 기준을 구분해야 하는 이유 | Product Builder Hub Guides">
+    <meta property="og:description" content="같은 날짜 범위도 계산 기준에 따라 결과가 달라지는 이유와 실무 커뮤니케이션 팁을 정리한 글입니다.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://product-builder-public-t8b.pages.dev/blog/article-4.html">
+    <meta property="og:image" content="https://product-builder-public-t8b.pages.dev/favicon.svg">
     <meta name="twitter:card" content="summary_large_image">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "사람들이 로또 번호를 자동으로 선택할 때의 심리적 안정감",
-      "description": "우리는 왜 숫자를 직접 고르는 것을 포기하고 기계의 난수 생성 알고리즘에 운명을 맡길까요? 자동 선택 이면에 숨겨진 인간의 심리학을 다룹니다.",
-      "author": {
-        "@type": "Person",
-        "name": "Product Builder Team"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Product Builder Hub",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://product-builder-public-t8b.pages.dev/vite.svg"
-        }
-      },
-      "datePublished": "2024-02-24T00:00:00+09:00",
-      "dateModified": "2024-02-24T00:00:00+09:00"
-    }
-    </script>
+    
+    <link rel="stylesheet" href="/assets/site.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6100551786781834" crossorigin="anonymous"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;700&display=swap');
-        body { font-family: 'Pretendard', sans-serif; background-color: #0f172a; color: #f8fafc; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding: 0; }
-        .header { width: 100%; background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0; z-index: 100; }
-        .nav { max-width: 800px; margin: 0 auto; padding: 1rem 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 700; font-size: 1.2rem; color: #f8fafc; text-decoration: none; background: linear-gradient(135deg, #60a5fa, #a855f7); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-links { display: flex; gap: 1.5rem; }
-        .nav-links a { color: #cbd5e1; text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
-        .nav-links a:hover { color: #f8fafc; }
-        .container { max-width: 800px; width: 100%; padding: 40px 20px; flex: 1; }
-        .article-header { border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 2rem; margin-bottom: 2rem; }
-        h1 { font-size: 2.2rem; line-height: 1.4; margin-bottom: 1rem; }
-        .meta { color: #94a3b8; font-size: 0.9rem; }
-        .content { line-height: 1.8; font-size: 1.05rem; color: #cbd5e1; }
-        .content h2 { color: #f8fafc; margin-top: 2.5rem; margin-bottom: 1rem; font-size: 1.4rem; }
-        .content p { margin-bottom: 1.5rem; }
-        footer { width: 100%; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 4rem; }
-        .footer-links { display: flex; gap: 1.5rem; opacity: 0.8; font-size: 0.85rem; }
-        .footer-links a { color: inherit; text-decoration: underline; transition: opacity 0.2s; }
-    </style>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HE0T7V263S"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-HE0T7V263S');
     </script>
-    <!-- Microsoft Clarity -->
     <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "vq8rc6yoj3");
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, 'clarity', 'script', 'vq8rc6yoj3');
     </script>
-</head>
-<body>
-    <header class="header">
-        <nav class="nav">
-            <a href="/index.html" class="logo">Product Builder Hub</a>
-            <div class="nav-links">
-                <a href="/index.html">Home</a>
-                <a href="/blog/index.html" style="color: #f8fafc; font-weight: 700;">Blog</a>
-                <a href="/about.html">About</a>
-                <a href="/contact.html">Contact</a>
-            </div>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"일정 계산에서 포함 기준과 제외 기준을 구분해야 하는 이유","description":"같은 날짜 범위도 계산 기준에 따라 결과가 달라지는 이유와 실무 커뮤니케이션 팁을 정리한 글입니다.","datePublished":"2026-03-20T00:00:00+09:00","dateModified":"2026-03-20T00:00:00+09:00","author":{"@type":"Organization","name":"Product Builder Hub"},"publisher":{"@type":"Organization","name":"Product Builder Hub","logo":{"@type":"ImageObject","url":"https://product-builder-public-t8b.pages.dev/favicon.svg"}},"mainEntityOfPage":"https://product-builder-public-t8b.pages.dev/blog/article-4.html"}</script>
+  
+      </head>
+      <body>
+        
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="/" aria-label="Product Builder Hub 홈">
+          <span class="brand__mark">PB</span>
+          <span class="brand__text">
+            <span class="brand__title">Product Builder Hub</span>
+            <span class="brand__subtitle">Browser-first utility studio</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="/">Home</a><a href="/tools/index.html">Tools</a><a href="/blog/index.html" aria-current="page">Guides</a><a href="/about.html">About</a><a href="/contact.html">Contact</a>
         </nav>
+      </div>
     </header>
-
-    <main class="container">
-        <article>
-            <header class="article-header">
-                <h1>사람들이 로또 번호를 자동으로 선택할 때의 심리적 안정감</h1>
-                <div class="meta">발행일: <time datetime="2026-03-05">2026-03-05</time> | 작성자: Product Builder Team</div>
-                <div style="margin-top: 1.5rem; text-align: left; background: rgba(30, 41, 59, 0.6); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(168, 85, 247, 0.3);">
-                    <p class="answer-summary" style="margin: 0; line-height: 1.6; font-size: 0.95rem;">
-                        <strong>요약:</strong> 우리는 왜 숫자를 직접 고르는 것을 포기하고 기계의 난수 생성 알고리즘에 운명을 맡길까요? 자동 선택 이면에 숨겨진 인간의 심리학을 다룹니다.
-                    </p>
-                </div>
-            </header>
-            <section class="content">
-                
-            <h2>1. 수동의 고통과 결정 피로도</h2>
-            <p>현대인은 매일같이 수백 개의 결정을 내리며 살아갑니다. 아침 메뉴부터 이메일 답변 여부, 업무상의 중요한 결단까지 뇌의 에너지는 끊임없이 소진됩니다. 이를 심리학에서는 '결정 피로(Decision Fatigue)'라고 부릅니다. 이런 상황에서 일주일의 작은 활력소가 되는 복권을 대할 때, 막상 OMR 용지를 앞에 두고 여섯 개의 숫자를 고민하는 것은 유희가 아닌 또 다른 정신적 노동으로 다가오곤 합니다. 그래서 사람들은 복잡한 수학 공식이나 꿈 해몽 대신 그저 버튼 하나만 누르면 끝나는 가장 매끄러운 경험, 즉 '자동' 방식을 점차 선호하게 됩니다.</p>
-
-            <h2>2. 책임 회피와 후회의 최소화 편향</h2>
-            <p>내 손으로 직접 심혈을 기울여 고른 번호 1, 2, 3, 4, 5, 6이 한 개도 맞지 않았을 때 밀려오는 자괴감은 꽤 파괴적입니다. "아, 원래 생각했던 7번을 적을걸" 하는 구체적인 자책과 뼈아픈 '후회(Regret)'가 따릅니다. 반면에 기계가 알아서 생성해 준 난수 번호표가 휴짓조각이 되었을 때는 타격감이 훨씬 덜합니다. "그저 운이 없었네", "기계가 영 별로였어"라며 실패의 원인을 내가 아닌 외부(알고리즘 시스템이나 추첨 기계 자체)로 투사할 수 있기 때문입니다. 이는 인간이 자아(Ego)를 방어하기 위해 본능적으로 선택하는 자기 보호 메커니즘의 한 형태입니다.</p>
-
-            <h2>3. 기계적 객관성에 대한 무의식적 신뢰</h2>
-            <p>자신이 선택한 번호에는 주관과 감정이 개입됩니다. 가족의 생일, 기념일 징크스 같은 편향이 필연적으로 들어갑니다. 하지만 많은 사람들은 직관적으로 알고 있습니다. 로또 추첨기에 들어있는 공들에겐 어떠한 감정도 스며있지 않다는 사실을 말입니다. 따라서 나와 감정적 유대가 전혀 없는, 차갑고 엄밀하게 코딩된 자바스크립트 <code>Math.random()</code> 같은 난수 알고리즘이 오히려 그 객관적이고 무자비한 추첨기 시스템과 파동이 비슷할 것이라는 무의식적인 신뢰가 발생합니다. 완벽한 무작위 기계와 완벽한 무작위 알고리즘의 대결 구도인 셈입니다.</p>
-
-            <h2>4. 과정 자체가 주는 도파민 보상</h2>
-            <p>웹사이트에서 버튼을 눌러 번호를 생성(Generate)하는 순간의 시각적 즐거움도 무시할 수 없습니다. Product Builder의 생성기처럼 예쁜 공모양 UI가 튀어 오르고 폭죽이 터지는(Confetti) 작은 애니메이션 효과를 보는 것만으로도 뇌는 소량의 도파민을 분비합니다. 무언가를 기대하고 긁어보는 행위 자체를 온라인으로 쾌적하게 선행 체험하는 오락 기능의 일종입니다. 텍스트만 덜렁 나오던 과거와 달리 현재의 도구들이 미려한 디자인을 강조하는 이유도 바로 이 심리적 만족감을 충족시키기 위함입니다.</p>
-
-            <h2>5. 결론: 행운을 즐기는 현대적인 방식</h2>
-            <p>결국 도구를 활용하여 숫자를 자동 생성하는 행위는 팍팍한 삶 속에서 인간이 심리적 부담을 최소화하면서도 일말의 희망이라는 감정을 안전하게 배양하는 현대적인 엔터테인먼트 방식입니다. 지나친 과몰입이나 왜곡된 번호 분석에 빠져 맹신하는 것보다, 이처럼 운명의 선택을 투명한 확률 엔진에 가볍게 위임한 채 그 결과 자체를 삶의 즐거운 이벤트로 소화하는 것이 가장 건강하게 행운을 다루는 방법일 것입니다.</p>
+  
+        <main class="site-main">
+          
+    <section class="article-shell">
+      <div class="article-layout">
+        <article class="article-main">
+          <header class="article-header">
+            <span class="badge">Planning</span>
+            <h1>일정 계산에서 포함 기준과 제외 기준을 구분해야 하는 이유</h1>
+            <p class="lede">날짜 차이는 단순해 보여도 기준 설명이 없으면 가장 쉽게 오해가 생기는 숫자입니다. 일정 관리에서 자주 생기는 착오를 정리했습니다.</p>
+            <div class="article-meta">
+              <span>발행일 2026-03-20</span>
+              <span>읽는 시간 5분</span>
+              <span>작성 Product Builder Hub</span>
+            </div>
+          </header>
+          <div class="rich-text">
+            
+      <section>
+        <h2>일정 숫자가 엇갈리는 가장 흔한 출발점</h2>
+        <p>“3일 일정”이라는 말은 일상에서는 별 문제 없어 보입니다. 하지만 계약 일정, 제작 일정, 마감 일정처럼 실제 업무와 연결되면 바로 혼란이 생깁니다. 시작일과 종료일을 둘 다 포함하는지, 순수 차이만 계산하는지에 따라 결과가 달라지기 때문입니다.</p><p>예를 들어 월요일부터 수요일까지의 작업을 3일로 보는 팀도 있고 2일 차이로 보는 팀도 있습니다. 둘 중 하나가 틀렸다기보다, 기준을 먼저 합의하지 않았기 때문에 생기는 문제입니다.</p>
         
-            </section>
+      </section>
+    
+      <section>
+        <h2>평일 기준 계산은 또 다른 층위의 문제입니다</h2>
+        <p>실제 업무는 주말에 멈추는 경우가 많기 때문에, 달력 일수만 보면 일정이 과도하게 길어 보이거나 짧아 보일 수 있습니다. 그래서 프로젝트 일정에서는 평일 기준 일수를 별도로 보는 경우가 많습니다.</p><p>다만 평일 기준 계산도 공휴일, 대체휴무, 회사별 휴무 정책이 섞이면 다시 달라집니다. 일정 계산기는 기본 구조를 빠르게 보여주지만, 최종 일정은 항상 팀의 실제 근무 리듬을 반영해 다듬어야 합니다.</p>
+        
+      </section>
+    
+      <section>
+        <h2>좋은 일정 커뮤니케이션은 계산 결과를 문장으로 다시 적습니다</h2>
+        <p>수치만 던지는 일정 공유는 대부분 오해를 남깁니다. “총 12일”이라고 적는 대신 “3월 4일부터 3월 15일까지, 주말 제외 평일 10일”처럼 계산 기준을 함께 적어 두면 상대방이 같은 그림을 떠올리기 쉬워집니다.</p><p>일정을 둘러싼 갈등은 대개 큰 전략 문제가 아니라 작은 표현 차이에서 시작됩니다. 그래서 계산 도구를 쓴 뒤에는 그 결과를 설명 가능한 문장으로 한 번 더 바꾸는 과정이 중요합니다.</p>
+        
+      </section>
+    
+      <section>
+        <h2>작은 계산 차이가 왜 일정 전체를 흔들까요?</h2>
+        <p>기획, 디자인, 개발, 검수처럼 단계가 이어지는 작업에서는 하루 차이도 전체 일정에 연쇄적으로 영향을 줍니다. 그래서 일정 계산은 행정적인 숫자가 아니라, 팀의 기대치를 맞추는 기초 작업이라고 볼 수 있습니다.</p><p>포함 기준과 제외 기준을 구분하는 습관은 대단한 관리 기술이 아니라 기본적인 소통 태도에 가깝습니다. 숫자를 빨리 내는 것보다 같은 숫자를 함께 이해하는 것이 더 중요하기 때문입니다.</p>
+        
+      </section>
+    
+          </div>
         </article>
+        <aside class="aside-stack">
+          <div class="aside-card">
+            <h2>핵심 요약</h2>
+            <p>같은 날짜 범위도 계산 기준에 따라 결과가 달라지는 이유와 실무 커뮤니케이션 팁을 정리한 글입니다.</p>
+          </div>
+          <div class="aside-card">
+            <h2>관련 도구</h2>
+            <ul class="link-list"><li><a href="/tools/date-difference.html">날짜 차이 계산기</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h2>문서 운영 원칙</h2>
+            <ul>
+              <li>실제 사용 맥락이 있는 주제만 다룹니다.</li>
+              <li>기능 설명과 한계를 함께 적습니다.</li>
+              <li>짧은 홍보성 문구보다 해석 기준을 우선합니다.</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+  
+        </main>
         
-        <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
-            <a href="/blog/index.html" style="display: inline-block; padding: 12px 24px; background: rgba(255,255,255,0.05); color: #f8fafc; text-decoration: none; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">목록으로 돌아가기</a>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="footer-meta">
+          <a class="brand" href="/" aria-label="Product Builder Hub 홈">
+            <span class="brand__mark">PB</span>
+            <span class="brand__text">
+              <span class="brand__title">Product Builder Hub</span>
+              <span class="brand__subtitle">Lightweight tools, clearer decisions</span>
+            </span>
+          </a>
+          <p>설치 없이 바로 쓰는 브라우저 기반 도구와 실무형 가이드를 운영하는 Product Builder Hub입니다. 도구와 가이드는 사용자가 기능을 이해하고 신뢰할 수 있도록 운영 원칙, 개인정보 정책, 업데이트 기준을 함께 공개합니다.</p>
+          <p class="footer-note">© <span data-year></span> Product Builder Hub. Some pages may display advertising after AdSense approval to support maintenance and documentation.</p>
         </div>
-    </main>
-
-    <footer>
-        <div class="footer-links">
-            <a href="/terms.html">이용약관</a>
-            <a href="/privacy.html">개인정보처리방침</a>
-            <a href="/about.html">About Us</a>
-            <a href="/contact.html">Contact Us</a>
+        <div>
+          <div class="footer-links"><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/editorial-policy.html">Editorial Policy</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="https://github.com/purpleant1011/product-builder_public" target="_blank" rel="noopener noreferrer">GitHub</a></div>
         </div>
-        <div style="opacity: 0.6; text-align: center; font-size: 0.85rem;">
-            © <span id="year"></span> Product Builder. All rights reserved.
-        </div>
+      </div>
     </footer>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-    <script src="/translation.js"></script>
-</body>
-</html>
+  
+        <script src="/assets/site.js"></script>
+      </body>
+    </html>

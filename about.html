@@ -1,271 +1,139 @@
 <!DOCTYPE html>
-<html lang="ko">
-
-<head>
+    <html lang="ko">
+      <head>
+        
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="zXNqTgnAS36FBBnvfpLXH49pqZ-6LGzRd4ihomkeRLg">
     <meta name="google-adsense-account" content="ca-pub-6100551786781834">
     <meta name="robots" content="index, follow">
-    <meta name="keywords" content="Product Builder, 소개, 개발팀, 프리미엄 유틸리티">
+    <meta name="keywords" content="Product Builder Hub 소개, 운영 원칙, 공개 저장소">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <title>About Us - Product Builder Hub</title>
-    <meta name="description" content="Product Builder 허브 커뮤니티의 운영 비전과 개발팀에 대해 소개합니다. 우리는 더 유용하고 아름다운 디지털 모던 도구를 설계합니다.">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+    <title>About | Product Builder Hub</title>
+    <meta name="description" content="Product Builder Hub의 운영 목적, 사이트 구조, 공개 저장소, 브라우저 우선 원칙을 소개하는 페이지입니다.">
     <link rel="canonical" href="https://product-builder-public-t8b.pages.dev/about.html">
-    <meta property="og:title" content="소개말 - Product Builder Hub">
-    <meta property="og:description" content="Product Builder가 일상을 어떻게 쾌적하게 바꾸는지 개발팀의 비전을 읽어보세요.">
+    <meta property="og:title" content="About | Product Builder Hub">
+    <meta property="og:description" content="Product Builder Hub의 운영 목적, 사이트 구조, 공개 저장소, 브라우저 우선 원칙을 소개하는 페이지입니다.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://product-builder-public-t8b.pages.dev/about.html">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6100551786781834"
-        crossorigin="anonymous"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;700&display=swap');
-
-        body {
-            /* 중복 스타일 생략, terms.html과 동일한 스타일 적용 */
-            font-family: 'Pretendard', sans-serif;
-            background-color: #0f172a;
-            color: #f8fafc;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .header {
-            width: 100%;
-            background: rgba(30, 41, 59, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 1rem 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: #f8fafc;
-            text-decoration: none;
-            background: linear-gradient(135deg, #60a5fa, #a855f7);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .nav-links a {
-            color: #cbd5e1;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: #f8fafc;
-        }
-
-        .container {
-            max-width: 800px;
-            width: 100%;
-            padding: 40px 20px;
-            flex: 1;
-        }
-
-        .content-box {
-            background: rgba(30, 41, 59, 0.4);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 2.5rem;
-            line-height: 1.8;
-            font-size: 0.95rem;
-        }
-
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        h2 {
-            font-size: 1.3rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 0.5rem;
-        }
-
-        footer {
-            width: 100%;
-            padding: 2rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 4rem;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 1.5rem;
-            opacity: 0.8;
-            font-size: 0.85rem;
-        }
-
-        .footer-links a {
-            color: inherit;
-            text-decoration: underline;
-            transition: opacity 0.2s;
-        }
-
-        .footer-links a:hover {
-            opacity: 1;
-        }
-
-        .team-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .member-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-    </style>
-    <!-- Google tag (gtag.js) -->
+    <meta property="og:image" content="https://product-builder-public-t8b.pages.dev/favicon.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="stylesheet" href="/assets/site.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6100551786781834" crossorigin="anonymous"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HE0T7V263S"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-HE0T7V263S');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HE0T7V263S');
     </script>
-    <!-- Microsoft Clarity -->
     <script type="text/javascript">
-        (function (c, l, a, r, i, t, y) {
-            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-        })(window, document, "clarity", "script", "vq8rc6yoj3");
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, 'clarity', 'script', 'vq8rc6yoj3');
     </script>
-</head>
-
-<body>
-    <header class="header">
-        <nav class="nav">
-            <a href="/index.html" class="logo">Product Builder Hub</a>
-            <div class="nav-links">
-                <a href="/index.html">Home</a>
-                <a href="/blog/index.html">Blog</a>
-                <a href="/about.html" style="color: #f8fafc; font-weight: 700;">About</a>
-                <a href="/contact.html">Contact</a>
-            </div>
+    
+  
+      </head>
+      <body>
+        
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="/" aria-label="Product Builder Hub 홈">
+          <span class="brand__mark">PB</span>
+          <span class="brand__text">
+            <span class="brand__title">Product Builder Hub</span>
+            <span class="brand__subtitle">Browser-first utility studio</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="/">Home</a><a href="/tools/index.html">Tools</a><a href="/blog/index.html">Guides</a><a href="/about.html" aria-current="page">About</a><a href="/contact.html">Contact</a>
         </nav>
+      </div>
     </header>
+  
+        <main class="site-main">
+          
+    
+    <section class="page-intro">
+      <span class="page-intro__eyebrow">About</span>
+      <h1>Product Builder Hub 소개</h1>
+      <p class="lede">Product Builder Hub는 브라우저 안에서 빠르게 끝낼 수 있는 작은 도구와, 그 도구를 신뢰할 수 있게 만드는 설명 문서를 함께 운영합니다.</p>
+      <div class="article-meta"><span>최종 업데이트 2026-03-20</span><span>Build in public</span><span>Browser-first</span></div>
+    </section>
+  
+    <section class="legal-shell">
+      <div class="legal-layout">
+        <div class="legal-main">
+          <div class="legal-body">
+            <h2>우리가 만드는 것</h2>
+            <p>이 사이트는 거대한 생산성 플랫폼을 대체하려는 목적이 아니라, 자주 반복되지만 시스템 도입까지는 필요 없는 작업을 빠르게 끝내게 돕는 데 목적이 있습니다. 랜덤 추첨, 퍼센트 변화 계산, 날짜 차이 계산, 회의 비용 추정처럼 작은 단위의 계산과 판단을 브라우저에서 간단히 처리할 수 있도록 설계합니다.</p>
+            <p>동시에 단순 계산 결과만 제공하지 않고, 그 도구를 언제 쓰면 좋은지, 어디까지 믿어도 되는지, 어떤 경우에는 별도 시스템이 필요한지까지 함께 설명합니다. 사이트의 정체성을 “도구 모음”이 아니라 “도구와 설명을 함께 제공하는 퍼블리싱 허브”로 보는 이유입니다.</p>
 
-    <main class="container">
-        <article>
-            <header style="margin-bottom: 2rem; text-align: center;">
-                <h1 style="margin-bottom: 0.5rem;">About Product Builder (프로덕트 빌더 소개)</h1>
-                <p class="meta" style="opacity: 0.8; font-size: 0.9rem;">
-                    작성: Product Builder Team · 최종 업데이트: <time datetime="2026-03-05">2026-03-05</time>
-                </p>
-                <div
-                    style="text-align: left; background: rgba(30, 41, 59, 0.6); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(168, 85, 247, 0.3); margin-top: 1.5rem;">
-                    <p class="answer-summary" style="margin: 0; line-height: 1.6;">
-                        <strong>요약:</strong> Product Builder Hub는 모던 프론트엔드 기술을 활용하여 무료로 고품질의 디지털 유틸리티를 배포하는 신뢰할 수 있는
-                        플랫폼입니다. 본 페이지는 우리의 미션, 차별성, 프라이버시 원칙 및 팀 비전을 명시합니다.
-                    </p>
-                </div>
-            </header>
+            <h2>운영 방식</h2>
+            <p>각 도구와 문서는 다음 원칙을 따릅니다.</p>
+            <ul>
+              <li>기능보다 사용 맥락을 먼저 설명합니다.</li>
+              <li>한계와 면책 범위를 별도 페이지가 아닌 실제 사용 흐름 안에 배치합니다.</li>
+              <li>운영 정보, 연락처, 정책 문서를 누구나 찾기 쉽게 공개합니다.</li>
+              <li>가능한 경우 입력값을 브라우저 안에서 처리해 데이터 이동을 줄입니다.</li>
+            </ul>
 
-            <section class="content-box">
-                <h2 id="mission">우리의 미션과 철학 (Our Mission & Philosophy)</h2>
-                <p>Product Builder Hub는 복잡한 일상을 조금 더 편리하고 즐겁게 다루기 위해 만들어진 <strong>창의적인 웹 유틸리티(Web Utility)
-                        컬렉션입니다.</strong>
-                    우리는 강력한
-                    연산 능력과 함께 아름다운 시각적 만족(UX/UI 환경)을 동시에 제공하는 웰메이드 소프트웨어를 누구에게나 무료로 배포하는 것을 최우선 목표로 삼고 있습니다.</p>
-                <p>첫 번째 도구인 "Lotto Dreamer" 난수 생성기를 시작으로, 누구나 쉽고 직관적으로 이용할 수 있는 다양한 수학/통계 기반의 계산기, 퍼포먼스 분석 도구, 업무 생산성
-                    유틸리티
-                    등을 지속적으로 연구하며 생태계를 확장해 나갈 철저한 로드맵을 계획 중입니다.</p>
+            <h2>왜 공개 저장소를 연결했나요?</h2>
+            <p>작은 사이트일수록 누가 운영하는지 보이기 어렵습니다. 그래서 가능한 범위 안에서 공개 저장소와 변경 이력을 연결해 두고, 사이트 구조와 정적 페이지가 어떻게 관리되는지 확인할 수 있게 했습니다. 이는 기능을 과시하기 위한 것이 아니라, 운영 주체와 유지 방식이 완전히 익명으로 보이지 않게 하려는 선택입니다.</p>
 
-                <h2>기존 서비스와의 차별점 (Core Differences)</h2>
-                <p>인터넷에는 이미 많은 무료 난수 추출기, 계산기, 도구들이 존재합니다. 그러나 대다수가 과도한 광고로 화면을 전부 덮고 있거나, 10년 전 코드로 작성된 낡은 디자인, 그리고 모바일
-                    기기에서의 느린 반응성을 사용자에게 고집스럽게 강요하고 있습니다.</p>
-                <p>Product Builder는 다크 모드(Dark Mode), 시야를 분리해 주는 글래스모피즘(Glassmorphism) 아트워크, 그리고 최신 프론트엔드 라이브러리인
-                    React.js와
-                    Vite 생태계를 기반으로 매우 빠르고 혁신적인 사용자 경험(User Experience)을 선사합니다. 단순히 작동하는 것에 멈추지 않고 사용하는 과정 그 자체가 '즐거운
-                    상호작용성'을
-                    지니도록 엔지니어링되었습니다.</p>
-
-                <h2>운영 팀 및 크리에이터 (Who we are)</h2>
-                <div class="team-section">
-                    <div class="member-card">
-                        <div
-                            style="width: 80px; height: 80px; background: linear-gradient(135deg, #60a5fa, #a855f7); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: bold; color: white;">
-                            P</div>
-                        <h3 style="margin: 0 0 0.5rem 0;">Product Builder Team</h3>
-                        <p style="font-size: 0.85rem; opacity: 0.8; margin: 0;">Lead Engineering & Design Group</p>
-                        <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 1rem;">모던 웹의 지향점을 바탕으로 사용자에게 궁극적 가치를
-                            부여하는 여러
-                            디지털 제품과 정보 콘텐츠 블로그를 지속적으로 기획, 설계, 배포합니다.</p>
-                    </div>
-                </div>
-
-                <h2 id="privacy">프라이버시 우선 정책 (Privacy-First Approach)</h2>
-                <p>우리가 제공하는 대부분의 일상 유틸리티 도구들(로또 생성기 포함)은 별도의 백엔드 데이터베이스를 거치지 않습니다. 핵심 구동은 철저하게 사용자의 브라우저 내 '클라이언트 사이드
-                    메모리
-                    환경(Client-side Rendering)'에서만 처리되므로, 난수로 생성된 민감한 결과 정보가 외부 서버로 절대 전송되지 않는 완벽한 기밀 유지와 정보 보호 철학을 고수하고
-                    있습니다.</p>
-
-                <h2 id="vision">미래의 비전 (Our Ultimate Vision)</h2>
-                <p>지금은 자그마한 도구 모음집에서 첫 발걸음을 뗐지만, 저희 팀은 지속적인 기술 트렌드 학습과 글로벌 서비스 사례 분석을 통해 본 허브를 '일반 대중 누구나 브라우저 첫 화면 북마크에
-                    필수
-                    저장해두고 매일 애용하는 디지털 유틸리티 글로벌 백과사전'으로 발전시켜 나갈 원대한 비전을 품고 있습니다. 구글, 네이버 등 각종 검색망을 통해 인연을 맺고 들어오시는 다양한
-                    유저분들의
-                    격려와 피드백이 프로젝트 개발을 지속시키는 원동력 압축기입니다.</p>
-                <p>저희 소프트웨어가 귀하의 일상 속 작은 불편함을 매끄럽게 해소하고, 때론 확률 게임 속 즐거운 활력소가 되길 진심으로 열망합니다. 이용 관련 건의 사항이나 기술적 시스템 제휴 문의,
-                    광고
-                    운영에 관한 논의는 언제나 환영하오니 Contact 페이지를 이용해 연락 부탁드립니다.</p>
-            </section>
-        </article>
-    </main>
-
-    <footer>
-        <div class="footer-links">
-            <a href="/terms.html">이용약관</a>
-            <a href="/privacy.html">개인정보처리방침</a>
-            <a href="/about.html">About Us</a>
-            <a href="/contact.html">Contact Us</a>
+            <div class="callout callout--info">
+              <strong>공개 저장소</strong><br />
+              <a href="https://github.com/purpleant1011/product-builder_public" target="_blank" rel="noopener noreferrer">https://github.com/purpleant1011/product-builder_public</a>
+            </div>
+          </div>
         </div>
-        <div style="opacity: 0.6; text-align: center; font-size: 0.85rem;">
-            © <span id="year"></span> Product Builder. All rights reserved.
+        <aside class="aside-stack">
+          <div class="aside-card">
+            <h2>사이트 구성</h2>
+            <ul>
+              <li>브라우저 기반 도구</li>
+              <li>실무형 짧은 가이드</li>
+              <li>운영 정보와 정책 페이지</li>
+            </ul>
+          </div>
+          <div class="aside-card">
+            <h2>관련 페이지</h2>
+            <ul class="link-list">
+              <li><a href="/tools/index.html">도구 모음</a></li>
+              <li><a href="/blog/index.html">가이드 모음</a></li>
+              <li><a href="/editorial-policy.html">편집 기준</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+  
+        </main>
+        
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="footer-meta">
+          <a class="brand" href="/" aria-label="Product Builder Hub 홈">
+            <span class="brand__mark">PB</span>
+            <span class="brand__text">
+              <span class="brand__title">Product Builder Hub</span>
+              <span class="brand__subtitle">Lightweight tools, clearer decisions</span>
+            </span>
+          </a>
+          <p>설치 없이 바로 쓰는 브라우저 기반 도구와 실무형 가이드를 운영하는 Product Builder Hub입니다. 도구와 가이드는 사용자가 기능을 이해하고 신뢰할 수 있도록 운영 원칙, 개인정보 정책, 업데이트 기준을 함께 공개합니다.</p>
+          <p class="footer-note">© <span data-year></span> Product Builder Hub. Some pages may display advertising after AdSense approval to support maintenance and documentation.</p>
         </div>
+        <div>
+          <div class="footer-links"><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/editorial-policy.html">Editorial Policy</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="https://github.com/purpleant1011/product-builder_public" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+        </div>
+      </div>
     </footer>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-    <script src="/translation.js"></script>
-</body>
-
-</html>
+  
+        <script src="/assets/site.js"></script>
+      </body>
+    </html>

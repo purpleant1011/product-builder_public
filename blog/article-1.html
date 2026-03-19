@@ -1,144 +1,146 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
+    <html lang="ko">
+      <head>
+        
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="zXNqTgnAS36FBBnvfpLXH49pqZ-6LGzRd4ihomkeRLg">
     <meta name="google-adsense-account" content="ca-pub-6100551786781834">
     <meta name="robots" content="index, follow">
-    <meta name="keywords" content="Product Builder, 테크 블로그, 개발, 난수 생성, 알고리즘, 디자인">
+    <meta name="keywords" content="브라우저 기반 도구가 개인정보 측면에서 유리한 이유, Privacy, Product Builder Hub">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <title>자바스크립트 Math.random()은 정말 완벽한 난수일까? - Product Builder Blog</title>
-    <meta name="description" content="프론트엔드 환경에서 생성되는 무작위 숫자의 이면. 로또 번호 생성기부터 암호화 기술까지, 난수(Random Number)의 본질을 파헤칩니다.">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+    <title>브라우저 기반 도구가 개인정보 측면에서 유리한 이유 | Product Builder Hub Guides</title>
+    <meta name="description" content="작은 유틸리티를 고를 때 왜 “서버로 보내는가, 브라우저에서 처리하는가”를 먼저 봐야 하는지 정리한 가이드입니다.">
     <link rel="canonical" href="https://product-builder-public-t8b.pages.dev/blog/article-1.html">
-    <meta property="og:title" content="자바스크립트 Math.random()은 정말 완벽한 난수일까?">
-    <meta property="og:description" content="프론트엔드 환경에서 생성되는 무작위 숫자의 이면. 로또 번호 생성기부터 암호화 기술까지, 난수(Random Number)의 본질을 파헤칩니다.">
+    <meta property="og:title" content="브라우저 기반 도구가 개인정보 측면에서 유리한 이유 | Product Builder Hub Guides">
+    <meta property="og:description" content="작은 유틸리티를 고를 때 왜 “서버로 보내는가, 브라우저에서 처리하는가”를 먼저 봐야 하는지 정리한 가이드입니다.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://product-builder-public-t8b.pages.dev/blog/article-1.html">
+    <meta property="og:image" content="https://product-builder-public-t8b.pages.dev/favicon.svg">
     <meta name="twitter:card" content="summary_large_image">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "자바스크립트 Math.random()은 정말 완벽한 난수일까?",
-      "description": "프론트엔드 환경에서 생성되는 무작위 숫자의 이면. 로또 번호 생성기부터 암호화 기술까지, 난수(Random Number)의 본질을 파헤칩니다.",
-      "author": {
-        "@type": "Person",
-        "name": "Product Builder Team"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Product Builder Hub",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://product-builder-public-t8b.pages.dev/vite.svg"
-        }
-      },
-      "datePublished": "2024-02-24T00:00:00+09:00",
-      "dateModified": "2024-02-24T00:00:00+09:00"
-    }
-    </script>
+    
+    <link rel="stylesheet" href="/assets/site.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6100551786781834" crossorigin="anonymous"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;700&display=swap');
-        body { font-family: 'Pretendard', sans-serif; background-color: #0f172a; color: #f8fafc; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding: 0; }
-        .header { width: 100%; background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0; z-index: 100; }
-        .nav { max-width: 800px; margin: 0 auto; padding: 1rem 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 700; font-size: 1.2rem; color: #f8fafc; text-decoration: none; background: linear-gradient(135deg, #60a5fa, #a855f7); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-links { display: flex; gap: 1.5rem; }
-        .nav-links a { color: #cbd5e1; text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
-        .nav-links a:hover { color: #f8fafc; }
-        .container { max-width: 800px; width: 100%; padding: 40px 20px; flex: 1; }
-        .article-header { border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 2rem; margin-bottom: 2rem; }
-        h1 { font-size: 2.2rem; line-height: 1.4; margin-bottom: 1rem; }
-        .meta { color: #94a3b8; font-size: 0.9rem; }
-        .content { line-height: 1.8; font-size: 1.05rem; color: #cbd5e1; }
-        .content h2 { color: #f8fafc; margin-top: 2.5rem; margin-bottom: 1rem; font-size: 1.4rem; }
-        .content p { margin-bottom: 1.5rem; }
-        footer { width: 100%; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 4rem; }
-        .footer-links { display: flex; gap: 1.5rem; opacity: 0.8; font-size: 0.85rem; }
-        .footer-links a { color: inherit; text-decoration: underline; transition: opacity 0.2s; }
-    </style>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HE0T7V263S"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-HE0T7V263S');
     </script>
-    <!-- Microsoft Clarity -->
     <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "vq8rc6yoj3");
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, 'clarity', 'script', 'vq8rc6yoj3');
     </script>
-</head>
-<body>
-    <header class="header">
-        <nav class="nav">
-            <a href="/index.html" class="logo">Product Builder Hub</a>
-            <div class="nav-links">
-                <a href="/index.html">Home</a>
-                <a href="/blog/index.html" style="color: #f8fafc; font-weight: 700;">Blog</a>
-                <a href="/about.html">About</a>
-                <a href="/contact.html">Contact</a>
-            </div>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"브라우저 기반 도구가 개인정보 측면에서 유리한 이유","description":"작은 유틸리티를 고를 때 왜 “서버로 보내는가, 브라우저에서 처리하는가”를 먼저 봐야 하는지 정리한 가이드입니다.","datePublished":"2026-03-20T00:00:00+09:00","dateModified":"2026-03-20T00:00:00+09:00","author":{"@type":"Organization","name":"Product Builder Hub"},"publisher":{"@type":"Organization","name":"Product Builder Hub","logo":{"@type":"ImageObject","url":"https://product-builder-public-t8b.pages.dev/favicon.svg"}},"mainEntityOfPage":"https://product-builder-public-t8b.pages.dev/blog/article-1.html"}</script>
+  
+      </head>
+      <body>
+        
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="/" aria-label="Product Builder Hub 홈">
+          <span class="brand__mark">PB</span>
+          <span class="brand__text">
+            <span class="brand__title">Product Builder Hub</span>
+            <span class="brand__subtitle">Browser-first utility studio</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="/">Home</a><a href="/tools/index.html">Tools</a><a href="/blog/index.html" aria-current="page">Guides</a><a href="/about.html">About</a><a href="/contact.html">Contact</a>
         </nav>
+      </div>
     </header>
-
-    <main class="container">
-        <article>
-            <header class="article-header">
-                <h1>자바스크립트 Math.random()은 정말 완벽한 난수일까?</h1>
-                <div class="meta">발행일: <time datetime="2026-03-05">2026-03-05</time> | 작성자: Product Builder Team</div>
-                <div style="margin-top: 1.5rem; text-align: left; background: rgba(30, 41, 59, 0.6); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(168, 85, 247, 0.3);">
-                    <p class="answer-summary" style="margin: 0; line-height: 1.6; font-size: 0.95rem;">
-                        <strong>요약:</strong> 프론트엔드 환경에서 생성되는 무작위 숫자의 이면. 로또 번호 생성기부터 암호화 기술까지, 난수(Random Number)의 본질을 파헤칩니다.
-                    </p>
-                </div>
-            </header>
-            <section class="content">
-                
-            <h2>1. 서론: '무작위'라는 환상</h2>
-            <p>우리는 일상에서 '무작위(Random)'라는 단어를 자주 사용합니다. 동전을 던지거나 주사위를 굴릴 때 나오는 결과를 무작위라고 부르죠. 하지만 엄밀히 말해 고전 역학의 관점에서 동전 던지기는 초기 조건(힘, 각도, 공기 저항)을 완벽히 안다면 결과를 예측할 수 있는 결정론적 사건입니다. 그렇다면 모든 것이 0과 1 논리 회로로 이루어진 컴퓨터는 어떻게 완벽히 무작위인 숫자를 만들어낼 수 있을까요? 결론부터 말하자면, 우리가 일상적으로 사용하는 대부분의 웹 프로그램은 '진짜 무작위'가 아닌 '유사 무작위(Pseudo-Random)'를 사용합니다.</p>
-            <p>이 글에서는 자바스크립트 엔진이 내부적으로 어떤 수학적 알고리즘을 거쳐 공정하고 예측 불가능해 보이는 결과값을 제공하는지, RNG(Random Number Generator)의 세계를 깊이 탐구합니다.</p>
-
-            <h2>2. PRNG(Pseudo-Random Number Generator)의 작동 원리</h2>
-            <p>컴퓨터는 본질적으로 입력된 연산식과 명령을 그대로 반복 수행하는 논리 기계입니다. 따라서 특별한 하드웨어 센서의 도움 없이 순수 소프트웨어만으로는 우주의 엔트로피 같은 완벽한 무작위성을 구현할 수 없습니다. 대신 복잡한 수학적 공식을 사용하여 마치 무작위처럼 보이는 엄청나게 긴 수열을 만들어내는데, 이를 PRNG(유사 난수 생성기)라고 합니다. PRNG는 '시드(Seed)'라는 초기값을 바탕으로 작동하며, 만약 시스템에 동일한 시드값을 입력하면 알고리즘은 항상 동일한 난수 배열을 순서대로 뱉어냅니다.</p>
-            <p>초창기 컴퓨터 과학에서는 무작위성에 대한 연구가 미비하여 보안 사고가 발생하기도 했습니다. 수학적 주기가 짧아 다음 번호를 예측하여 부당한 이득을 취하는 범죄가 발생하기도 했죠. 하지만 현대의 PRNG는 메르센 트위스터(Mersenne Twister) 혹은 최근 브라우저들이 도입한 XorShift 계열 알고리즘을 사용하여 주기가 우주 나이의 수십억 배에 달할 정도로 길고, 통계적으로도 매우 훌륭한 균등성을 보여줍니다.</p>
-
-            <h2>3. 웹 브라우저와 Math.random() 스펙</h2>
-            <p>웹 브라우저에서 실행되는 웹 애플리케이션들은 대부분 JavaScript의 기본 내장 함수인 <code>Math.random()</code>을 사용하여 난수를 추출합니다. 이 함수는 0.0 이상 1.0 미만의 부동소수점 난수를 반환합니다. 흥미로운 점은 과거에는 브라우저 회사마다 이 스펙을 구현하는 내부 수학 엔진이 각기 달랐다는 것입니다. 어떤 브라우저는 보안에 취약하고 치우침이 발생하는 오래된 알고리즘을 쓰기도 했죠. 하지만 최근의 모던 브라우저(Chrome, Firefox, Edge, Safari 등)는 대부분 v8 엔진을 비롯한 고도화된 스크립트 엔진을 기반으로 하며, 내부적으로 빠른 연산 속도와 훌륭한 난수 품질을 완벽하게 보장하는 <strong>xorshift128+</strong> 알고리즘을 사실상의 표준처럼 채택하고 있습니다.</p>
-
-            <h2>4. TRNG(True Random Number Generator): 진정한 무작위성</h2>
-            <p>그렇다면 진정한 무작위는 불가능할까요? 아닙니다. 하드웨어 기반의 TRNG(진정 난수 생성기)를 사용하면 됩니다. TRNG는 컴퓨터 프로세서 내부의 열적 잡음(Thermal noise), 대기 중 방사성 동위원소의 붕괴 속도, 우주 배경 복사, 혹은 마우스 커서의 물리적인 미세 움직임 지연 시간처럼 애초에 예측이 수학적으로 100% 불가능한 물리적 자연 현상을 측정하여 난수를 만듭니다. 암호학적으로 매우 중요한 은행의 금융 보안 시스템이나 국가 기밀 통신망에서는 PRNG 대신 이러한 물리적 엔트로피(Entropy)를 기반으로 한 TRNG 장비를 사용하여 해커의 예측 가능성을 원천적으로 박탈합니다.</p>
-
-            <h2>5. 결론: 일상의 도구를 위한 충분한 무작위</h2>
-            <p>웹상에서 로또 번호 6자리를 골라내거나 이벤트 당첨자를 추첨하는 일은 국가망 통신을 방어하는 일에 비하면 아주 가벼운 작업입니다. 따라서 앞서 설명한 브라우저 자체 내장 V8 엔진의 <code>Math.random()</code> 만으로도 통계적으로 티끌 하나 없이 완벽하고 공정한 숫자를 얻어내기에 무리가 없습니다. 잘 짜인 코드는 번호의 편향이나 뭉침 현상 없이 수백만 번의 반복 테스트에서도 고른 분포를 보여주기 때문입니다. 일상에 약간의 편의와 재미를 더하는 도구에 있어 프론트엔드의 무작위 알고리즘은 이미 그 역할을 훌륭히 수행하고 있습니다.</p>
+  
+        <main class="site-main">
+          
+    <section class="article-shell">
+      <div class="article-layout">
+        <article class="article-main">
+          <header class="article-header">
+            <span class="badge">Privacy</span>
+            <h1>브라우저 기반 도구가 개인정보 측면에서 유리한 이유</h1>
+            <p class="lede">브라우저 안에서 계산하는 도구는 단순히 빠르기만 한 것이 아니라, 입력 데이터가 어디로 이동하는지 설명하기 쉬워 신뢰 형성에도 유리합니다.</p>
+            <div class="article-meta">
+              <span>발행일 2026-03-20</span>
+              <span>읽는 시간 6분</span>
+              <span>작성 Product Builder Hub</span>
+            </div>
+          </header>
+          <div class="rich-text">
+            
+      <section>
+        <h2>입력 데이터가 이동하는 순간 리스크가 생깁니다</h2>
+        <p>우리가 가볍게 쓰는 계산기나 정리 도구는 대부분 “텍스트를 넣고 결과를 본다”는 구조를 가집니다. 그런데 같은 기능이라도 어떤 서비스는 입력값을 서버로 보내고, 어떤 서비스는 브라우저 안에서 바로 계산합니다. 사용자 입장에서는 둘 다 비슷해 보이지만, 데이터가 이동하는지 여부는 리스크를 크게 바꿉니다.</p><p>서버 전송이 일어나는 순간에는 최소한 저장 여부, 처리 목적, 제3자 위탁, 접근 권한 같은 질문이 따라옵니다. 반대로 브라우저 내부 계산 도구는 이런 질문의 범위가 훨씬 좁아집니다. 물론 브라우저 도구도 완전무결하지는 않지만, 적어도 입력값이 외부로 나가지 않는다는 사실을 설명하기는 훨씬 쉽습니다.</p>
         
-            </section>
+      </section>
+    
+      <section>
+        <h2>작은 업무일수록 브라우저 도구가 더 잘 맞을 때가 있습니다</h2>
+        <p>랜덤 추첨, 날짜 차이 계산, 간단한 퍼센트 계산처럼 반복은 잦지만 시스템 도입까지는 필요 없는 일들이 있습니다. 이런 업무는 속도와 접근성이 중요하고, 팀원이 여러 곳에서 같은 화면을 열어도 결과가 쉽게 이해되어야 합니다.</p><p>브라우저 기반 유틸리티는 바로 이런 틈새에 잘 맞습니다. 설치가 필요 없고, 접근 권한을 복잡하게 설정할 필요도 없으며, 입력 데이터가 민감하지 않은 범위라면 작업을 신속하게 끝낼 수 있습니다. 실무에서는 이 “작지만 자주 쓰는 작업”의 마찰을 줄이는 것만으로도 체감 효율이 큽니다.</p>
+        
+      </section>
+    
+      <section>
+        <h2>그렇다고 모든 문제를 브라우저 도구로 해결할 수는 없습니다</h2>
+        <p>브라우저 안에서 계산된다는 사실이 모든 신뢰 문제를 해결해 주는 것은 아닙니다. 법적 근거가 필요한 계산, 감사 추적이 필요한 공식 절차, 팀 전체 기록을 남겨야 하는 작업은 결국 별도 시스템이 필요합니다. 브라우저 도구는 빠른 처리와 개인 혹은 소규모 팀의 운영 편의에 강하고, 조직 차원의 기록 관리에는 한계가 있습니다.</p><p>중요한 것은 도구의 한계를 명확히 공개하는 태도입니다. 어디까지 자동화되는지, 어떤 데이터는 저장되지 않는지, 어떤 절차는 사용자가 추가로 관리해야 하는지 분명히 써 두면 사용자는 훨씬 안심하고 도구를 선택할 수 있습니다.</p>
+        
+      </section>
+    
+      <section>
+        <h2>작은 유틸리티 사이트가 신뢰를 얻는 방식</h2>
+        <p>결국 신뢰는 기능만으로 생기지 않습니다. 누가 운영하는지, 문의할 방법이 있는지, 개인정보와 광고 정책이 어떻게 정리되어 있는지, 업데이트 기준이 무엇인지 같은 정보가 함께 공개되어야 합니다. 브라우저 기반 계산은 신뢰의 시작점이지, 전부가 아닙니다.</p><p>그래서 Product Builder Hub는 도구 소개 페이지와 별도로 운영 원칙, 편집 기준, 개인정보 처리 내용을 공개합니다. 사용자가 기능을 쓰는 순간뿐 아니라, 사이트 자체를 평가하는 순간에도 충분한 설명을 제공하는 것이 장기적으로 더 중요하다고 보기 때문입니다.</p>
+        
+      </section>
+    
+          </div>
         </article>
+        <aside class="aside-stack">
+          <div class="aside-card">
+            <h2>핵심 요약</h2>
+            <p>작은 유틸리티를 고를 때 왜 “서버로 보내는가, 브라우저에서 처리하는가”를 먼저 봐야 하는지 정리한 가이드입니다.</p>
+          </div>
+          <div class="aside-card">
+            <h2>관련 도구</h2>
+            <ul class="link-list"><li><a href="/tools/random-picker.html">랜덤 추첨기</a></li><li><a href="/tools/date-difference.html">날짜 차이 계산기</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h2>문서 운영 원칙</h2>
+            <ul>
+              <li>실제 사용 맥락이 있는 주제만 다룹니다.</li>
+              <li>기능 설명과 한계를 함께 적습니다.</li>
+              <li>짧은 홍보성 문구보다 해석 기준을 우선합니다.</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+  
+        </main>
         
-        <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
-            <a href="/blog/index.html" style="display: inline-block; padding: 12px 24px; background: rgba(255,255,255,0.05); color: #f8fafc; text-decoration: none; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">목록으로 돌아가기</a>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="footer-meta">
+          <a class="brand" href="/" aria-label="Product Builder Hub 홈">
+            <span class="brand__mark">PB</span>
+            <span class="brand__text">
+              <span class="brand__title">Product Builder Hub</span>
+              <span class="brand__subtitle">Lightweight tools, clearer decisions</span>
+            </span>
+          </a>
+          <p>설치 없이 바로 쓰는 브라우저 기반 도구와 실무형 가이드를 운영하는 Product Builder Hub입니다. 도구와 가이드는 사용자가 기능을 이해하고 신뢰할 수 있도록 운영 원칙, 개인정보 정책, 업데이트 기준을 함께 공개합니다.</p>
+          <p class="footer-note">© <span data-year></span> Product Builder Hub. Some pages may display advertising after AdSense approval to support maintenance and documentation.</p>
         </div>
-    </main>
-
-    <footer>
-        <div class="footer-links">
-            <a href="/terms.html">이용약관</a>
-            <a href="/privacy.html">개인정보처리방침</a>
-            <a href="/about.html">About Us</a>
-            <a href="/contact.html">Contact Us</a>
+        <div>
+          <div class="footer-links"><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/editorial-policy.html">Editorial Policy</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="https://github.com/purpleant1011/product-builder_public" target="_blank" rel="noopener noreferrer">GitHub</a></div>
         </div>
-        <div style="opacity: 0.6; text-align: center; font-size: 0.85rem;">
-            © <span id="year"></span> Product Builder. All rights reserved.
-        </div>
+      </div>
     </footer>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-    <script src="/translation.js"></script>
-</body>
-</html>
+  
+        <script src="/assets/site.js"></script>
+      </body>
+    </html>

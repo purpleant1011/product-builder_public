@@ -41,9 +41,8 @@ body {
   background-color: var(--bg-light);
   color: var(--text-light);
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
+  padding: 28px 16px 80px;
 }
 
 body.dark {
@@ -159,6 +158,236 @@ h1 {
 
 .copy-btn:active {
   transform: scale(0.95);
+}
+
+.app-shell {
+  width: min(960px, 100%);
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+}
+
+.hero-card,
+.generator-card,
+.helper-card {
+  padding: 32px;
+}
+
+.hero-top-links,
+.hero-actions,
+.pill-row,
+.content-heading,
+.set-card__header,
+.lotto-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.top-link {
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0.72;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.top-link:hover {
+  opacity: 1;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--accent-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.dark .pill {
+  background: rgba(199, 210, 254, 0.12);
+  color: #c7d2fe;
+}
+
+.hero-title {
+  font-size: clamp(2.6rem, 6vw, 4rem);
+  margin: 16px 0 12px;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-title__tag {
+  font-size: 1rem;
+  vertical-align: top;
+  color: #f59e0b;
+  -webkit-text-fill-color: initial;
+}
+
+.hero-subtitle,
+.content-heading p,
+.helper-card p,
+.note-box p,
+.empty-state p,
+.mini-note {
+  color: rgba(30, 41, 59, 0.78);
+  line-height: 1.7;
+}
+
+.dark .hero-subtitle,
+.dark .content-heading p,
+.dark .helper-card p,
+.dark .note-box p,
+.dark .empty-state p,
+.dark .mini-note {
+  color: rgba(248, 250, 252, 0.72);
+}
+
+.note-box {
+  display: flex;
+  gap: 12px;
+  margin: 20px 0 0;
+  padding: 18px 20px;
+  border-radius: 18px;
+  border: 1px solid rgba(239, 68, 68, 0.18);
+}
+
+.note-box strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.note-box--warning {
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.dark .note-box--warning {
+  background: rgba(239, 68, 68, 0.14);
+}
+
+.content-heading h2,
+.helper-card h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+}
+
+.mini-note {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.sets-column {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.set-card {
+  padding: 18px 20px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.dark .set-card {
+  background: rgba(0, 0, 0, 0.28);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.set-card__header strong {
+  font-size: 0.88rem;
+  opacity: 0.7;
+  letter-spacing: 0.08em;
+}
+
+.number-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.empty-state {
+  padding: 24px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px dashed rgba(0, 0, 0, 0.12);
+  text-align: center;
+}
+
+.dark .empty-state {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.helper-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.helper-grid article {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.dark .helper-grid article {
+  background: rgba(0, 0, 0, 0.24);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.helper-grid h3 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+}
+
+.helper-grid a,
+.lotto-footer a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.lotto-footer {
+  justify-content: center;
+  gap: 20px;
+  font-size: 0.9rem;
+  opacity: 0.82;
+}
+
+@media (max-width: 720px) {
+  body {
+    padding-top: 88px;
+  }
+
+  .hero-card,
+  .generator-card,
+  .helper-card {
+    padding: 24px;
+  }
+
+  .helper-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .theme-toggle {
+    top: 18px;
+    right: 18px;
+  }
 }
 
 /* Contact Form Styles */
