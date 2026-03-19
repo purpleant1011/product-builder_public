@@ -14,20 +14,32 @@ const SITE = {
   brandSummary: '설치 없이 바로 쓰는 브라우저 기반 도구와 실무형 가이드를 운영하는 Product Builder Hub입니다.',
 };
 
+const ROUTES = {
+  home: '/',
+  tools: '/tools/',
+  guides: '/blog/',
+  about: '/about',
+  contact: '/contact',
+  editorial: '/editorial-policy',
+  privacy: '/privacy',
+  terms: '/terms',
+  lottoApp: '/lotto-generator/dist/',
+};
+
 const NAV_ITEMS = [
-  { href: '/', label: 'Home' },
-  { href: '/tools/index.html', label: 'Tools' },
-  { href: '/blog/index.html', label: 'Guides' },
-  { href: '/about.html', label: 'About' },
-  { href: '/contact.html', label: 'Contact' },
+  { href: ROUTES.home, label: 'Home' },
+  { href: ROUTES.tools, label: 'Tools' },
+  { href: ROUTES.guides, label: 'Guides' },
+  { href: ROUTES.about, label: 'About' },
+  { href: ROUTES.contact, label: 'Contact' },
 ];
 
 const FOOTER_LINKS = [
-  { href: '/about.html', label: 'About' },
-  { href: '/contact.html', label: 'Contact' },
-  { href: '/editorial-policy.html', label: 'Editorial Policy' },
-  { href: '/privacy.html', label: 'Privacy' },
-  { href: '/terms.html', label: 'Terms' },
+  { href: ROUTES.about, label: 'About' },
+  { href: ROUTES.contact, label: 'Contact' },
+  { href: ROUTES.editorial, label: 'Editorial Policy' },
+  { href: ROUTES.privacy, label: 'Privacy' },
+  { href: ROUTES.terms, label: 'Terms' },
   { href: SITE.repoUrl, label: 'GitHub', external: true },
 ];
 
@@ -337,7 +349,7 @@ const TOOLS = [
           <strong>중요 안내</strong><br />
           이 도구는 당첨 확률을 높이거나 결과를 예측하는 서비스가 아닙니다. 단순히 무작위 숫자 조합을 생성해 보는 엔터테인먼트 도구입니다.
         </div>
-        <a class="button" href="/lotto-generator/dist/index.html">Lotto Dreamer 열기</a>
+        <a class="button" href="${ROUTES.lottoApp}">Lotto Dreamer 열기</a>
       </div>
     `,
     sections: [
@@ -638,6 +650,14 @@ function absoluteUrl(relativePath) {
   return `${SITE.baseUrl}${cleanPath}`;
 }
 
+function toolPath(slug) {
+  return `/tools/${slug}`;
+}
+
+function guidePath(fileName) {
+  return `/blog/${fileName.replace(/\.html$/, '')}`;
+}
+
 function ensureDir(filePath) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
 }
@@ -817,7 +837,7 @@ function renderGuideLinks(fileNames) {
   return fileNames
     .map((fileName) => GUIDES.find((guide) => guide.fileName === fileName))
     .filter(Boolean)
-    .map((guide) => `<li><a href="/blog/${guide.fileName}">${guide.title}</a></li>`)
+    .map((guide) => `<li><a href="${guidePath(guide.fileName)}">${guide.title}</a></li>`)
     .join('');
 }
 
@@ -825,7 +845,7 @@ function renderToolLinks(slugs) {
   return slugs
     .map((slug) => TOOLS.find((tool) => tool.slug === slug))
     .filter(Boolean)
-    .map((tool) => `<li><a href="/tools/${tool.slug}.html">${tool.title}</a></li>`)
+    .map((tool) => `<li><a href="${toolPath(tool.slug)}">${tool.title}</a></li>`)
     .join('');
 }
 
@@ -841,7 +861,7 @@ function renderToolPage(tool) {
       price: '0',
       priceCurrency: 'KRW',
     },
-    url: absoluteUrl(`/tools/${tool.slug}.html`),
+    url: absoluteUrl(toolPath(tool.slug)),
     description: tool.description,
   };
 
@@ -914,8 +934,8 @@ function renderToolPage(tool) {
   return renderLayout({
     title: `${tool.title} | ${SITE.name}`,
     description: tool.description,
-    canonicalPath: `/tools/${tool.slug}.html`,
-    currentPath: '/tools/index.html',
+    canonicalPath: toolPath(tool.slug),
+    currentPath: ROUTES.tools,
     body,
     keywords: `${tool.title}, ${tool.category}, Product Builder Hub`,
     schema,
@@ -942,7 +962,7 @@ function renderGuidePage(guide) {
         url: absoluteUrl('/favicon.svg'),
       },
     },
-    mainEntityOfPage: absoluteUrl(`/blog/${guide.fileName}`),
+    mainEntityOfPage: absoluteUrl(guidePath(guide.fileName)),
   };
 
   const body = `
@@ -988,8 +1008,8 @@ function renderGuidePage(guide) {
   return renderLayout({
     title: `${guide.title} | ${SITE.name} Guides`,
     description: guide.description,
-    canonicalPath: `/blog/${guide.fileName}`,
-    currentPath: '/blog/index.html',
+    canonicalPath: guidePath(guide.fileName),
+    currentPath: ROUTES.guides,
     body,
     keywords: `${guide.title}, ${guide.category}, Product Builder Hub`,
     schema,
@@ -1006,7 +1026,7 @@ function renderHomePage() {
         </div>
         <h3>${guide.title}</h3>
         <p>${guide.description}</p>
-        <a class="card-link" href="/blog/${guide.fileName}">가이드 읽기</a>
+        <a class="card-link" href="${guidePath(guide.fileName)}">가이드 읽기</a>
       </article>
     `)
     .join('');
@@ -1019,7 +1039,7 @@ function renderHomePage() {
       <h3>${tool.title}</h3>
       <p>${tool.summary}</p>
       <div class="mini-list">${tool.heroPoints.slice(0, 2).map((point) => `<span>${point}</span>`).join('')}</div>
-      <a class="card-link" href="/tools/${tool.slug}.html">도구 열기</a>
+      <a class="card-link" href="${toolPath(tool.slug)}">도구 열기</a>
     </article>
   `).join('');
 
@@ -1072,8 +1092,8 @@ function renderHomePage() {
         <h1>광고보다 먼저, 실제로 쓸 만한 브라우저 도구를 만듭니다.</h1>
         <p>Product Builder Hub는 설치 없이 바로 쓰는 경량 도구와, 그 도구를 왜 쓰는지 설명해 주는 가이드를 함께 운영합니다. 계산 결과만 보여주는 페이지가 아니라 사용 맥락, 한계, 개인정보 처리 방식까지 한 화면에서 이해할 수 있도록 설계했습니다.</p>
         <div class="button-row">
-          <a class="button" href="/tools/index.html">도구 둘러보기</a>
-          <a class="button-secondary" href="/blog/index.html">가이드 읽기</a>
+          <a class="button" href="${ROUTES.tools}">도구 둘러보기</a>
+          <a class="button-secondary" href="${ROUTES.guides}">가이드 읽기</a>
         </div>
       </div>
       <div class="hero__stats">
@@ -1134,7 +1154,7 @@ function renderHomePage() {
           <h2 class="section__title">도구를 더 잘 쓰게 만드는 짧고 실용적인 문서</h2>
           <p class="section__summary">단순한 SEO용 글이 아니라, 실제로 자주 헷갈리는 해석 기준과 운영 팁에 집중합니다.</p>
         </div>
-        <a class="button-ghost" href="/blog/index.html">전체 가이드 보기</a>
+        <a class="button-ghost" href="${ROUTES.guides}">전체 가이드 보기</a>
       </div>
       <div class="grid grid--3">
         ${featuredGuides}
@@ -1185,7 +1205,7 @@ function renderToolsIndex() {
       <h3>${tool.title}</h3>
       <p>${tool.description}</p>
       <div class="mini-list">${tool.useCases.map((item) => `<span>${item}</span>`).join('')}</div>
-      <a class="card-link" href="/tools/${tool.slug}.html">도구 보기</a>
+      <a class="card-link" href="${toolPath(tool.slug)}">도구 보기</a>
     </article>
   `).join('');
 
@@ -1204,8 +1224,8 @@ function renderToolsIndex() {
   return renderLayout({
     title: `도구 모음 | ${SITE.name}`,
     description: '랜덤 추첨기, 퍼센트 변화 계산기, 날짜 차이 계산기, 회의 비용 계산기 등 브라우저 기반 도구를 모아 둔 페이지입니다.',
-    canonicalPath: '/tools/index.html',
-    currentPath: '/tools/index.html',
+    canonicalPath: ROUTES.tools,
+    currentPath: ROUTES.tools,
     body,
     keywords: '브라우저 도구, 랜덤 추첨기, 계산기, Product Builder Hub',
   });
@@ -1223,7 +1243,7 @@ function renderGuidesIndex() {
         <span>${guide.readTime}</span>
         <span>${SITE.lastUpdated}</span>
       </div>
-      <a class="card-link" href="/blog/${guide.fileName}">가이드 읽기</a>
+      <a class="card-link" href="${guidePath(guide.fileName)}">가이드 읽기</a>
     </article>
   `).join('');
 
@@ -1242,8 +1262,8 @@ function renderGuidesIndex() {
   return renderLayout({
     title: `Guides | ${SITE.name}`,
     description: '브라우저 도구를 실제 업무와 일상에 더 잘 쓰기 위한 실무형 가이드와 노트를 모은 페이지입니다.',
-    canonicalPath: '/blog/index.html',
-    currentPath: '/blog/index.html',
+    canonicalPath: ROUTES.guides,
+    currentPath: ROUTES.guides,
     body,
     keywords: '실무 가이드, 랜덤 추첨 운영, 퍼센트 계산, 일정 관리, Product Builder Hub',
   });
@@ -1295,9 +1315,9 @@ function renderAboutPage() {
           <div class="aside-card">
             <h2>관련 페이지</h2>
             <ul class="link-list">
-              <li><a href="/tools/index.html">도구 모음</a></li>
-              <li><a href="/blog/index.html">가이드 모음</a></li>
-              <li><a href="/editorial-policy.html">편집 기준</a></li>
+              <li><a href="${ROUTES.tools}">도구 모음</a></li>
+              <li><a href="${ROUTES.guides}">가이드 모음</a></li>
+              <li><a href="${ROUTES.editorial}">편집 기준</a></li>
             </ul>
           </div>
         </aside>
@@ -1308,8 +1328,8 @@ function renderAboutPage() {
   return renderLayout({
     title: `About | ${SITE.name}`,
     description: 'Product Builder Hub의 운영 목적, 사이트 구조, 공개 저장소, 브라우저 우선 원칙을 소개하는 페이지입니다.',
-    canonicalPath: '/about.html',
-    currentPath: '/about.html',
+    canonicalPath: ROUTES.about,
+    currentPath: ROUTES.about,
     body,
     keywords: 'Product Builder Hub 소개, 운영 원칙, 공개 저장소',
   });
@@ -1353,7 +1373,7 @@ function renderContactPage() {
                 <label for="contact-message">문의 내용</label>
                 <textarea id="contact-message" name="message" required placeholder="어떤 페이지에서 어떤 문제가 있었는지, 또는 어떤 기능이 필요했는지 자세히 적어 주세요."></textarea>
               </div>
-              <p class="helper-text">문의 내용은 회신과 운영 개선 목적에 한해 처리되며, 세부 내용은 <a href="/privacy.html">개인정보처리방침</a>에서 확인할 수 있습니다.</p>
+              <p class="helper-text">문의 내용은 회신과 운영 개선 목적에 한해 처리되며, 세부 내용은 <a href="${ROUTES.privacy}">개인정보처리방침</a>에서 확인할 수 있습니다.</p>
               <button class="button" type="submit">문의 보내기</button>
             </form>
           </div>
@@ -1371,8 +1391,8 @@ function renderContactPage() {
             <h2>참고 링크</h2>
             <ul class="link-list">
               <li><a href="${SITE.repoUrl}" target="_blank" rel="noopener noreferrer">공개 저장소 보기</a></li>
-              <li><a href="/privacy.html">개인정보처리방침</a></li>
-              <li><a href="/editorial-policy.html">편집 기준</a></li>
+              <li><a href="${ROUTES.privacy}">개인정보처리방침</a></li>
+              <li><a href="${ROUTES.editorial}">편집 기준</a></li>
             </ul>
           </div>
         </aside>
@@ -1383,8 +1403,8 @@ function renderContactPage() {
   return renderLayout({
     title: `Contact | ${SITE.name}`,
     description: '버그 제보, 기능 제안, 제휴 문의를 위한 Product Builder Hub의 연락 페이지입니다.',
-    canonicalPath: '/contact.html',
-    currentPath: '/contact.html',
+    canonicalPath: ROUTES.contact,
+    currentPath: ROUTES.contact,
     body,
     keywords: '문의, 기능 제안, 버그 제보, Product Builder Hub',
   });
@@ -1439,8 +1459,8 @@ function renderEditorialPolicyPage() {
   return renderLayout({
     title: `Editorial Policy | ${SITE.name}`,
     description: 'Product Builder Hub가 도구와 문서를 어떤 기준으로 편집하고 업데이트하는지 설명하는 페이지입니다.',
-    canonicalPath: '/editorial-policy.html',
-    currentPath: '/about.html',
+    canonicalPath: ROUTES.editorial,
+    currentPath: ROUTES.editorial,
     body,
     keywords: '편집 기준, 운영 원칙, Product Builder Hub',
   });
@@ -1474,7 +1494,7 @@ function renderPrivacyPage() {
             <p>일부 도구는 편의를 위해 브라우저 내 저장소(Local Storage)를 사용할 수 있습니다. 이는 사용자의 기기 내에만 저장되며 사이트 운영자가 직접 수집하는 서버 데이터베이스와는 성격이 다릅니다. 사용자는 브라우저 설정을 통해 언제든 이 데이터를 삭제할 수 있습니다.</p>
 
             <h2>6. 문의와 권리 행사</h2>
-            <p>개인정보 처리에 관한 문의는 <a href="/contact.html">문의 페이지</a>를 통해 접수할 수 있습니다. 당사는 실제 서비스 범위 안에서 확인 가능한 요청에 성실히 응답하도록 노력합니다.</p>
+            <p>개인정보 처리에 관한 문의는 <a href="${ROUTES.contact}">문의 페이지</a>를 통해 접수할 수 있습니다. 당사는 실제 서비스 범위 안에서 확인 가능한 요청에 성실히 응답하도록 노력합니다.</p>
           </div>
         </div>
         <aside class="aside-stack">
@@ -1494,8 +1514,8 @@ function renderPrivacyPage() {
   return renderLayout({
     title: `Privacy Policy | ${SITE.name}`,
     description: 'Product Builder Hub의 도구 입력값, 문의 양식, 분석 도구, 광고 쿠키 처리 방침을 설명하는 페이지입니다.',
-    canonicalPath: '/privacy.html',
-    currentPath: '/about.html',
+    canonicalPath: ROUTES.privacy,
+    currentPath: ROUTES.privacy,
     body,
     keywords: '개인정보처리방침, 쿠키 정책, AdSense, Product Builder Hub',
   });
@@ -1549,8 +1569,8 @@ function renderTermsPage() {
   return renderLayout({
     title: `Terms of Service | ${SITE.name}`,
     description: 'Product Builder Hub의 무료 브라우저 도구와 문서를 이용할 때 적용되는 기본 약관과 책임 범위를 설명합니다.',
-    canonicalPath: '/terms.html',
-    currentPath: '/about.html',
+    canonicalPath: ROUTES.terms,
+    currentPath: ROUTES.terms,
     body,
     keywords: '이용약관, 무료 웹 도구, 면책 조항, Product Builder Hub',
   });
@@ -1559,16 +1579,16 @@ function renderTermsPage() {
 function generateSitemap() {
   const urls = [
     '/',
-    '/about.html',
-    '/contact.html',
-    '/privacy.html',
-    '/terms.html',
-    '/editorial-policy.html',
-    '/blog/index.html',
-    '/tools/index.html',
-    '/lotto-generator/dist/index.html',
-    ...GUIDES.map((guide) => `/blog/${guide.fileName}`),
-    ...TOOLS.map((tool) => `/tools/${tool.slug}.html`),
+    ROUTES.about,
+    ROUTES.contact,
+    ROUTES.privacy,
+    ROUTES.terms,
+    ROUTES.editorial,
+    ROUTES.guides,
+    ROUTES.tools,
+    ROUTES.lottoApp,
+    ...GUIDES.map((guide) => guidePath(guide.fileName)),
+    ...TOOLS.map((tool) => toolPath(tool.slug)),
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

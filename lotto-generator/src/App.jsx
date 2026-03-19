@@ -1,7 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, Check, Copy, Moon, RefreshCcw, ShieldAlert, Sparkles, Sun } from 'lucide-react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
+
+const ROUTES = {
+  intro: '/tools/lotto-randomizer',
+  tools: '/tools/',
+  guide: '/blog/article-6',
+  privacy: '/privacy',
+  terms: '/terms',
+  editorial: '/editorial-policy',
+};
+
+const MotionDiv = motion.div;
 
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -99,11 +110,11 @@ function App() {
 
       <header className="glass-card hero-card">
         <div className="hero-top-links">
-          <a href="/tools/lotto-randomizer.html" className="top-link">
+          <a href={ROUTES.intro} className="top-link">
             <ArrowLeft size={16} />
             도구 소개 페이지로
           </a>
-          <a href="/tools/index.html" className="top-link">
+          <a href={ROUTES.tools} className="top-link">
             전체 도구 보기
           </a>
         </div>
@@ -157,7 +168,7 @@ function App() {
         <div className="sets-column">
           <AnimatePresence mode="wait">
             {lottoSets.map((set, setIndex) => (
-              <motion.div
+              <MotionDiv
                 key={setIndex}
                 initial={{ opacity: 0, x: -24 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -178,7 +189,7 @@ function App() {
                 </div>
                 <div className="number-row">
                   {set.map((num, numberIndex) => (
-                    <motion.div
+                    <MotionDiv
                       key={numberIndex}
                       className="ball"
                       initial={{ scale: 0, rotate: -160 }}
@@ -192,10 +203,10 @@ function App() {
                       style={{ background: getBallBackground(num) }}
                     >
                       {num}
-                    </motion.div>
+                    </MotionDiv>
                   ))}
                 </div>
-              </motion.div>
+              </MotionDiv>
             ))}
           </AnimatePresence>
 
@@ -229,10 +240,10 @@ function App() {
             <p>
               기능 범위와 한계를 더 자세히 알고 싶다면
               {' '}
-              <a href="/tools/lotto-randomizer.html">도구 소개 페이지</a>
+              <a href={ROUTES.intro}>도구 소개 페이지</a>
               와
               {' '}
-              <a href="/blog/article-6.html">관련 가이드</a>
+              <a href={ROUTES.guide}>관련 가이드</a>
               를 함께 읽어 보세요.
             </p>
           </article>
@@ -240,9 +251,9 @@ function App() {
       </section>
 
       <footer className="lotto-footer">
-        <a href="/privacy.html">개인정보처리방침</a>
-        <a href="/terms.html">이용약관</a>
-        <a href="/editorial-policy.html">편집 기준</a>
+        <a href={ROUTES.privacy}>개인정보처리방침</a>
+        <a href={ROUTES.terms}>이용약관</a>
+        <a href={ROUTES.editorial}>편집 기준</a>
       </footer>
     </div>
   );
